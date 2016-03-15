@@ -24,6 +24,8 @@ namespace PVCR.DragDropExample.ViewModels
 
             SampleTitle = "Samples";
 
+
+
             //SampleGroup1 = new SampleModel { MethodName = "Group1", Count = 10 };
 
             //SampleGroup2 = new SampleModel { MethodName = "Group2", Count = 10 };
