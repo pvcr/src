@@ -15,58 +15,14 @@ namespace PVCR.DragDropExample.ViewModels
     {
         public MainViewModel()
         {
-            CopyRight = "Copyright © 2016.All rights reserved.";
-            Status = "Status";
-            CurrentDate = DateTime.Now.ToLongDateString();
-            Version = "1.0";
+            Init();
 
-            Appointments = AddManualAppointments();
+            GetSamples();
 
-            SampleTitle = "Samples";
+            GetTestings();
 
+            GetWriteup();
 
-
-            //SampleGroup1 = new SampleModel { MethodName = "Group1", Count = 10 };
-
-            //SampleGroup2 = new SampleModel { MethodName = "Group2", Count = 10 };
-
-            //SampleGroup3 = new SampleModel { MethodName = "Group3", Count = 10 };
-
-            InstrumentTitle = "Instruments";
-
-            SetupTitle = "Setup";
-
-            TestingTitle = "Testing";
-
-            WriteupTitle = "Writeup";
-
-            ExceptionsTitle = "Exceptions";
-
-
-
-
-            ObservableCollection<SampleModel> _lstSamples = LoadData();
-
-            var groups = from sm in _lstSamples
-                         group sm by sm.MethodName
-                              into g
-                         select new SampleModel
-                         {
-                             MethodName = g.Key,
-                             Count = g.Count()
-                            
-                         };
-
-            if (groups.Count() > 0)
-            {
-                SampleGroup1 = new SampleModel { MethodName = groups.ElementAt(20).MethodName, Count = groups.ElementAt(20).Count };
-
-                SampleGroup2 = new SampleModel { MethodName = groups.ElementAt(10).MethodName, Count = groups.ElementAt(10).Count };
-
-                SampleGroup3 = new SampleModel { MethodName = groups.ElementAt(5).MethodName, Count = groups.ElementAt(5).Count };
-
-
-            }
 
         }
 
@@ -101,9 +57,19 @@ namespace PVCR.DragDropExample.ViewModels
 
         public string ExceptionsTitle { get; set; }
 
+        public TestingModel TestingModel1 { get; set; }
 
+        public TestingModel TestingModel2 { get; set; }
 
-       public  ObservableCollection<CustomAppointment> Appointments { get; set; }
+        public TestingModel TestingModel3 { get; set; }
+
+        public WriteupModel WriteupModel1 { get; set; }
+
+        public WriteupModel WriteupModel2 { get; set; }
+
+        public WriteupModel WriteupModel3 { get; set; }
+
+        public ObservableCollection<CustomAppointment> Appointments { get; set; }
 
         #endregion
 
@@ -251,7 +217,8 @@ namespace PVCR.DragDropExample.ViewModels
 
             return appointments;
         }
-        private ObservableCollection<SampleModel> LoadData()
+
+        private ObservableCollection<SampleModel> LoadSampleData()
         {
             string connString = "Data Source = vwsql01-sql; Initial Catalog = SHIRE_PRD; Persist Security Info = True; User ID = reporter; Password = rep391prd;";
 
@@ -320,6 +287,270 @@ namespace PVCR.DragDropExample.ViewModels
 
             }
             return _lstSamples;
+        }
+
+        private ObservableCollection<TestingModel> LoadTestingDate()
+        {
+            string connString = "Data Source = vwsql01-sql; Initial Catalog = SHIRE_PRD; Persist Security Info = True; User ID = reporter; Password = rep391prd;";
+
+
+            string query = @"select 
+                            distinct s.sample_number, s.status, t.analysis, t.STATUS, t.BATCH, t.X_METHOD_NUMBER, s.X_CAUGHT_ON, s.PRODUCT, l.X_LOT_NAME, s.LOCATION,
+                            l.PRODUCTION_DATE, s.SAMPLE_TYPE, a.ANALYSIS_TYPE, s.SPEC_TYPE
+                            from LimsUser.SAMPLE s, LimsUser.RESULT r, LimsUser.TEST t, LimsUser.LOT l, ANALYSIS a
+                            WHERE s.SAMPLE_NUMBER = t.SAMPLE_NUMBER
+                            and t.TEST_NUMBER = r.TEST_NUMBER
+                            and a.[NAME] = t.ANALYSIS
+                            and a.VERSION = t.VERSION
+                            and s.status IN('U','I')
+                            and s.LOT = l.LOT_NUMBER
+                            and s.sample_type NOT IN ('RAW_MAT','EM')
+                            and s.LOCATION NOT IN ('DISCARD','PPD','PAD','CCPD')
+                            and a.ANALYSIS_TYPE NOT IN ('PAD', 'MFG','CONTRACT','MICRO')
+                            and s.PRODUCT NOT IN ('WATER','MFG_QUAL')
+                            and s.spec_type NOT IN('BACKUP','BACKUP2','BACKUP3','SATELLITE')
+                            and a.ANALYSIS_TYPE = 'TEST_TECH'
+                            and s.sample_number > 1240666";
+
+            ObservableCollection<TestingModel> lstTesting = new ObservableCollection<TestingModel>();
+            try
+            {
+                //Open the connection
+
+                using (DBHelper o = new DBHelper(connString))
+
+                {
+                    //MainWindow mainW=  this.FindName("mainWindow") as MainWindow;
+
+                    SqlCommand oCommand = o.GetCommand(query);
+
+                    SqlDataReader oReader = oCommand.ExecuteReader();
+
+                    while (oReader.Read())
+
+                    {
+
+
+                        TestingModel tm = new TestingModel();
+
+                        var mnum = oReader["X_METHOD_NUMBER"];
+                        if (mnum != null)
+                        {
+                            tm.Message = mnum.ToString();
+                        }
+                        else
+                        {
+                            tm.Message = "No Data";
+                        }
+
+
+                        lstTesting.Add(tm);
+                    }//while loop
+
+
+                }//using
+
+
+            }
+
+            catch (Exception ex)
+            {
+
+            }
+            return lstTesting;
+        }
+
+
+        private ObservableCollection<WriteupModel> LoadWriteupDate()
+        {
+            string connString = "Data Source = vwsql01-sql; Initial Catalog = SHIRE_PRD; Persist Security Info = True; User ID = reporter; Password = rep391prd;";
+
+
+            string query = @"select 
+                            distinct s.sample_number, s.status, t.analysis, t.STATUS, t.BATCH, t.X_METHOD_NUMBER, s.X_CAUGHT_ON, s.PRODUCT, l.X_LOT_NAME, s.LOCATION,
+                            l.PRODUCTION_DATE, s.SAMPLE_TYPE, a.ANALYSIS_TYPE, s.SPEC_TYPE
+                            from LimsUser.SAMPLE s, LimsUser.RESULT r, LimsUser.TEST t, LimsUser.LOT l, ANALYSIS a
+                            WHERE s.SAMPLE_NUMBER = t.SAMPLE_NUMBER
+                            and t.TEST_NUMBER = r.TEST_NUMBER
+                            and a.[NAME] = t.ANALYSIS
+                            and a.VERSION = t.VERSION
+                            and s.status IN('U','I')
+                            and s.LOT = l.LOT_NUMBER
+                            and s.sample_type NOT IN ('RAW_MAT','EM')
+                            and s.LOCATION NOT IN ('DISCARD','PPD','PAD','CCPD')
+                            and a.ANALYSIS_TYPE NOT IN ('PAD', 'MFG','CONTRACT','MICRO')
+                            and s.PRODUCT NOT IN ('WATER','MFG_QUAL')
+                            and s.spec_type NOT IN('BACKUP','BACKUP2','BACKUP3','SATELLITE')
+                            and a.ANALYSIS_TYPE = 'TEST_TECH'
+                            and s.sample_number > 1240666";
+
+            ObservableCollection<WriteupModel> lstWriteup = new ObservableCollection<WriteupModel>();
+            try
+            {
+                //Open the connection
+
+                using (DBHelper o = new DBHelper(connString))
+
+                {
+                    //MainWindow mainW=  this.FindName("mainWindow") as MainWindow;
+
+                    SqlCommand oCommand = o.GetCommand(query);
+
+                    SqlDataReader oReader = oCommand.ExecuteReader();
+
+
+
+                    while (oReader.Read())
+
+                    {
+
+
+                        WriteupModel wm = new WriteupModel();
+
+                        var mnum = oReader["X_METHOD_NUMBER"];
+                        if (mnum != null)
+                        {
+                            wm.Message = mnum.ToString();
+                        }
+                        else
+                        {
+                            wm.Message = "No Data";
+                        }
+
+
+                        lstWriteup.Add(wm);
+                    }//while loop
+
+
+                }//using
+
+
+            }
+
+            catch (Exception ex)
+            {
+
+            }
+            return lstWriteup;
+        }
+
+
+
+        private void GetSamples()
+        {
+            ObservableCollection<SampleModel> _lstSamples = LoadSampleData();
+
+            var groups = from sm in _lstSamples
+                         group sm by sm.MethodName
+                              into g
+                         select new SampleModel
+                         {
+                             MethodName = g.Key,
+                             Count = g.Count()
+
+                         };
+
+            if (groups.Count() > 0)
+            {
+                SampleGroup1 = new SampleModel { MethodName = groups.ElementAt(20).MethodName, Count = groups.ElementAt(20).Count };
+
+                SampleGroup2 = new SampleModel { MethodName = groups.ElementAt(10).MethodName, Count = groups.ElementAt(10).Count };
+
+                SampleGroup3 = new SampleModel { MethodName = groups.ElementAt(5).MethodName, Count = groups.ElementAt(5).Count };
+
+
+            }
+        }
+
+        private void GetTestings()
+        {
+            ObservableCollection<TestingModel> _lst = LoadTestingDate();
+
+            var groups = from m in _lst
+                         group m by m.Message
+                              into g
+                         select new TestingModel
+                         {
+                             Message = g.Key,
+                             Count = g.Count()
+
+                         };
+
+            if (groups.Count() > 0)
+            {
+                TestingModel1 = new TestingModel { Message = groups.ElementAt(0).Message, Count = groups.ElementAt(0).Count };
+
+                TestingModel2 = new TestingModel { Message = groups.ElementAt(0).Message, Count = groups.ElementAt(0).Count };
+
+                TestingModel3 = new TestingModel { Message = groups.ElementAt(0).Message, Count = groups.ElementAt(0).Count };
+
+
+            }
+            else
+            {
+                TestingModel1 = new TestingModel { Message = "No Data", Count =0 };
+                                                                              
+                TestingModel2 = new TestingModel { Message = "No Data", Count =0 };
+                                                                            
+                TestingModel3 = new TestingModel { Message = "No Data", Count =0 };
+            }
+        }
+
+        private void GetWriteup()
+        {
+            ObservableCollection<WriteupModel> _lst = LoadWriteupDate();
+
+            var groups = from m in _lst
+                         group m by m.Message
+                              into g
+                         select new WriteupModel
+                         {
+                             Message = g.Key,
+                             Count = g.Count()
+
+                         };
+
+            if (groups.Count() > 0)
+            {
+                WriteupModel1 = new WriteupModel { Message = groups.ElementAt(0).Message, Count = groups.ElementAt(0).Count };
+
+                WriteupModel2 = new WriteupModel { Message = groups.ElementAt(0).Message, Count = groups.ElementAt(0).Count };
+
+                WriteupModel3 = new WriteupModel { Message = groups.ElementAt(0).Message, Count = groups.ElementAt(0).Count };
+
+
+            }
+            else
+            {
+                WriteupModel1 = new WriteupModel { Message = "No Data", Count =0 };
+                                                                              
+                WriteupModel2 = new WriteupModel { Message = "No Data", Count =0 };
+                                                                             
+                WriteupModel3 = new WriteupModel { Message = "No Data", Count =0 };
+            }
+        }
+
+        private void Init()
+        {
+            CopyRight = "Copyright © 2016.All rights reserved.";
+            Status = "Status";
+            CurrentDate = DateTime.Now.ToLongDateString();
+            Version = "1.0";
+
+            Appointments = AddManualAppointments();
+
+            SampleTitle = "Samples";
+
+
+            InstrumentTitle = "Instruments";
+
+            SetupTitle = "Setup";
+
+            TestingTitle = "Testing";
+
+            WriteupTitle = "Writeup";
+
+            ExceptionsTitle = "Exceptions";
         }
 
 

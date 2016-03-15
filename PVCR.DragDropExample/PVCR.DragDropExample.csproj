@@ -144,6 +144,8 @@
     </Compile>
     <Compile Include="Model\CustomAppointment.cs" />
     <Compile Include="Model\SampleModel.cs" />
+    <Compile Include="Model\TestingModel.cs" />
+    <Compile Include="Model\WriteupModel.cs" />
     <Compile Include="Service References\Authenticate\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

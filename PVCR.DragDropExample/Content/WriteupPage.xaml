@@ -39,16 +39,27 @@
                     <RowDefinition Height="0.33*"  />
                 </Grid.RowDefinitions>
 
-
-
-
-
-
-                <!--
-                <TextBlock Grid.Row="1" Text="Row 1" HorizontalAlignment="Center" VerticalAlignment="Stretch"/>
-                <TextBlock Grid.Row="2" Text="Row 2" HorizontalAlignment="Center" VerticalAlignment="Stretch"/>
-                <TextBlock Grid.Row="3" Text="Row 3" HorizontalAlignment="Center" VerticalAlignment="Stretch"/>
-                <TextBlock Grid.Row="5" Text="Row 4" HorizontalAlignment="Center" VerticalAlignment="Stretch"/>-->
+                <TextBlock Grid.Row="0"  Text="{Binding WriteupModel1.Message}" 
+                   FontSize="10"
+                   FontWeight="Bold"
+                   Foreground="#EEEEEE"                   
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"
+                   TextWrapping="Wrap" />
+                <TextBlock Grid.Row="1" Text="{Binding WriteupModel2.Message}" 
+                   FontSize="10"
+                   FontWeight="Bold"
+                   Foreground="#EEEEEE"                   
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"
+                   TextWrapping="Wrap"/>
+                <TextBlock Grid.Row="2" Text="{Binding WriteupModel3.Message}" 
+                   FontSize="10"
+                   FontWeight="Bold"
+                   Foreground="#EEEEEE"                   
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"
+                   TextWrapping="Wrap"/>
 
 
             </Grid>
