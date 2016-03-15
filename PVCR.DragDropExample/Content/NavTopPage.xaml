@@ -1,0 +1,123 @@
+﻿<UserControl x:Class="PVCR.DragDropExample.Content.NavTopPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PVCR.DragDropExample.Content"
+             mc:Ignorable="d" 
+             d:DesignHeight="100" d:DesignWidth="100">
+    <Grid x:Name="layoutNavTopRoot" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"  />
+            <RowDefinition Height="*"  />
+        </Grid.RowDefinitions>
+
+        <!--Title row-->
+
+        <Rectangle RadiusX="20" RadiusY="20" Width="30" Height="30" Grid.Row="0">
+            <Rectangle.Fill>
+                <ImageBrush  ImageSource="/images/person.png"  />
+            </Rectangle.Fill>
+        </Rectangle>
+
+       
+        <!--Title row end-->
+
+        <!--Content row-->
+        <Border BorderBrush="#3D3C3A" BorderThickness="1,3,1,5" Margin="5,5,5,5" Grid.Row="1">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                    <GradientStop Color="#1569C7" Offset="0.0" />
+                    <GradientStop Color="#1569C7" Offset="0.5" />
+                    <GradientStop Color="#1569C7" Offset="1.0" />
+                </LinearGradientBrush>
+            </Border.Background>
+            <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.25*"  />
+                    <RowDefinition Height="0.25*"  />
+                    <RowDefinition Height="0.25*"  />
+                    <RowDefinition Height="0.25*"  />
+
+                </Grid.RowDefinitions>
+                <Border BorderBrush="#3D3C3A" BorderThickness="1,1,1,1" Margin="0,0,0,0" Grid.Row="0">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                            <GradientStop Color="#004BA9" Offset="0.0" />
+                            <GradientStop Color="#004BA9" Offset="0.5" />
+                            <GradientStop Color="#004BA9" Offset="1.0" />
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <TextBlock  
+                   Text="My View" 
+                   FontSize="8"
+                   FontWeight="Bold"
+                   Foreground="#EEEEEE"                   
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"
+                   TextWrapping="Wrap"/>
+                </Border>
+                <Border BorderBrush="#3D3C3A" BorderThickness="1,1,1,1" Margin="0,0,0,0" Grid.Row="1" Height="55" VerticalAlignment="Center">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                            <GradientStop Color="#D17E1F" Offset="0.0" x:Name="Main1" />
+                            <GradientStop Color="#D17E1F" Offset="0.5" x:Name="Main2" />
+                            <GradientStop Color="#D17E1F" Offset="1.0" x:Name="Main3" />
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <TextBlock x:Name="tabmain" MouseDown="tabmain_Click" TouchDown="tabmain_Click"
+                   Text="Team View" 
+                   FontSize="8"
+                   FontWeight="Bold"
+                   Foreground="#EEEEEE" 
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"
+                   TextWrapping="Wrap"/>
+                </Border>
+
+                <Border BorderBrush="#3D3C3A" BorderThickness="1,1,1,1" Margin="0,0,0,0" Grid.Row="2">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                            <GradientStop Color="#004BA9" Offset="0.0" x:Name="Map1"/>
+                            <GradientStop Color="#004BA9" Offset="0.5" x:Name="Map2" />
+                            <GradientStop Color="#004BA9" Offset="1.0" x:Name="Map3" />
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <TextBlock Grid.Row="3" x:Name="tabmap" MouseDown="tabmap_Click" TouchDown="tabmap_Click"
+                   Text="Control Tower" 
+                   FontSize="8"
+                   FontWeight="Bold"
+                   Foreground="#EEEEEE"                   
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"
+                   TextWrapping="Wrap"/>
+                </Border>
+                <Border BorderBrush="#3D3C3A" BorderThickness="1,1,1,1" Margin="0,0,0,0" Grid.Row="3">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                            <GradientStop Color="#004BA9" Offset="0.0" />
+                            <GradientStop Color="#004BA9" Offset="0.5" />
+                            <GradientStop Color="#004BA9" Offset="1.0" />
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <TextBlock Grid.Row="4" 
+                   Text="More" 
+                   FontSize="8"
+                   FontWeight="Bold"
+                   Foreground="#EEEEEE"                   
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"
+                   TextWrapping="Wrap"/>
+                </Border>
+
+
+
+
+            </Grid>
+
+        </Border>
+        <!--Content row end-->
+
+
+    </Grid>
+</UserControl>

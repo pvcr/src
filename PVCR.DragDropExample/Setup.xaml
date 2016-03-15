@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="PVCR.DragDropExample.Setup"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PVCR.DragDropExample"
+             mc:Ignorable="d" 
+             d:DesignHeight="190" d:DesignWidth="190" AllowDrop="True">
+    <UserControl.Resources>
+        <Style x:Key="HeaderStyle" TargetType="Label">
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="FontFamily" Value="Calibri" />
+            <Setter Property="FontWeight" Value="Bold" />
+        </Style>
+    </UserControl.Resources>
+    <Grid Margin="1" HorizontalAlignment="Center">
+        <WrapPanel  Orientation="Horizontal" x:Name="setupUI" MinHeight="85" MaxHeight="85" MinWidth="200" Background="Transparent">
+           
+
+        </WrapPanel>
+    </Grid>
+   
+</UserControl>

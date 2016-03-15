@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:ns="labware_weblims_authenticate" xmlns:ns1="http://org.apache.axis2/xsd" targetNamespace="labware_weblims_authenticate" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation>labware_weblims_authenticate</wsdl:documentation>
+  <wsdl:types>
+    <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="labware_weblims_authenticate">
+      <xs:element name="authenticate">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="limsDSName" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="limsServiceName" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="authenticateResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="authenticateWithRole">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="role" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="limsDSName" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="limsServiceName" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="authenticateWithRoleResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="authenticateRequest">
+    <wsdl:part name="parameters" element="ns:authenticate" />
+  </wsdl:message>
+  <wsdl:message name="authenticateResponse">
+    <wsdl:part name="parameters" element="ns:authenticateResponse" />
+  </wsdl:message>
+  <wsdl:message name="authenticateWithRoleRequest">
+    <wsdl:part name="parameters" element="ns:authenticateWithRole" />
+  </wsdl:message>
+  <wsdl:message name="authenticateWithRoleResponse">
+    <wsdl:part name="parameters" element="ns:authenticateWithRoleResponse" />
+  </wsdl:message>
+  <wsdl:portType name="labware_weblims_authenticatePortType">
+    <wsdl:operation name="authenticate">
+      <wsdl:input wsaw:Action="urn:authenticate" message="ns:authenticateRequest" />
+      <wsdl:output wsaw:Action="urn:authenticateResponse" message="ns:authenticateResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="authenticateWithRole">
+      <wsdl:input wsaw:Action="urn:authenticateWithRole" message="ns:authenticateWithRoleRequest" />
+      <wsdl:output wsaw:Action="urn:authenticateWithRoleResponse" message="ns:authenticateWithRoleResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="labware_weblims_authenticateSoap11Binding" type="ns:labware_weblims_authenticatePortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="authenticate">
+      <soap:operation soapAction="urn:authenticate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="authenticateWithRole">
+      <soap:operation soapAction="urn:authenticateWithRole" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="labware_weblims_authenticateSoap12Binding" type="ns:labware_weblims_authenticatePortType">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="authenticate">
+      <soap12:operation soapAction="urn:authenticate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="authenticateWithRole">
+      <soap12:operation soapAction="urn:authenticateWithRole" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="labware_weblims_authenticate">
+    <wsdl:port name="labware_weblims_authenticateHttpSoap11Endpoint" binding="ns:labware_weblims_authenticateSoap11Binding">
+      <soap:address location="http://10.110.34.133:8080/PTV5/services/labware_weblims_authenticate.labware_weblims_authenticateHttpSoap11Endpoint/" />
+    </wsdl:port>
+    <wsdl:port name="labware_weblims_authenticateHttpSoap12Endpoint" binding="ns:labware_weblims_authenticateSoap12Binding">
+      <soap12:address location="http://10.110.34.133:8080/PTV5/services/labware_weblims_authenticate.labware_weblims_authenticateHttpSoap12Endpoint/" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

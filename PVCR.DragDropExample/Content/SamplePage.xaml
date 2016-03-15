@@ -1,0 +1,65 @@
+﻿<UserControl x:Class="PVCR.DragDropExample.Content.SamplePage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PVCR.DragDropExample.Content"
+             xmlns:localctrl="clr-namespace:PVCR.DragDropExample.UserControls"
+             mc:Ignorable="d" 
+              d:DesignHeight="100" d:DesignWidth="100">
+    <Grid x:Name="layoutSampleRoot">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"  />
+            <RowDefinition Height="*"  />
+        </Grid.RowDefinitions>
+
+        <!--Title row-->
+        <TextBlock Grid.Row="0" 
+                   Text="{Binding SampleTitle}" 
+                   FontSize="10"
+                   FontWeight="Bold"
+                   Foreground="#EEEEEE"                   
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"
+                   TextWrapping="Wrap"/>
+        <!--Title row end-->
+
+        <!--content row-->
+        <Border BorderBrush="#3D3C3A" BorderThickness="1,3,1,5" Margin="5,5,5,5" Grid.Row="1" >
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                    <GradientStop Color="#201D1E" Offset="0.0" />
+                    <GradientStop Color="#201D1E" Offset="0.5" />
+                    <GradientStop Color="#201D1E" Offset="1.0" />
+                </LinearGradientBrush>
+            </Border.Background>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.4*"  />
+                    <RowDefinition Height="0.3*"  />
+                    <RowDefinition Height="0.3*"  />
+                    <!--<RowDefinition Height="0.6*"  />-->
+                </Grid.RowDefinitions>
+
+                <localctrl:SamplesContainerCtrl x:Name="scg1" Grid.Row="0" Background="#d22819" Margin="5" MaxDisplayValue="{Binding SampleGroup1.Count}" DisplayMethodName="{Binding SampleGroup1.MethodName}" />
+                <localctrl:SamplesContainerCtrl x:Name="scg2" Grid.Row="1" Background="#f28818" Margin="5" MaxDisplayValue="{Binding SampleGroup2.Count}" DisplayMethodName="{Binding SampleGroup2.MethodName}" />
+                <localctrl:SamplesContainerCtrl x:Name="scg3" Grid.Row="2" Background="#5b9e47" Margin="5" MaxDisplayValue="{Binding SampleGroup3.Count}" DisplayMethodName="{Binding SampleGroup3.MethodName}" />
+                <!--<TextBlock Grid.Row="0" Text="Row 1" HorizontalAlignment="Center" VerticalAlignment="Stretch"/>
+                <TextBlock Grid.Row="1" Text="Row 2" HorizontalAlignment="Center" VerticalAlignment="Stretch"/>
+                <TextBlock Grid.Row="2" Text="Row 3" HorizontalAlignment="Center" VerticalAlignment="Stretch"/>-->
+                <!--<TextBlock Grid.Row="5" Text="Row 4" HorizontalAlignment="Center" VerticalAlignment="Stretch"/>-->
+                <!--<uctrl:SamplesCtrl Grid.Row="0" Margin="12"  DisplayValue="{Binding SampleModel.Sample1.Count}" DisplayMethodName="{Binding SampleModel.Sample1.MethodName}" DisplayDueDate="{Binding SampleModel.Sample1.DueDate}" />
+                <uctrl:SamplesCtrl Grid.Row="1" Margin="12"  DisplayValue="{Binding SampleModel.Sample2.Count}" DisplayMethodName="{Binding SampleModel.Sample2.MethodName}" DisplayDueDate="{Binding SampleModel.Sample2.DueDate}" />
+                <uctrl:SamplesCtrl Grid.Row="2" Margin="12"  DisplayValue="{Binding SampleModel.Sample3.Count}" DisplayMethodName="{Binding SampleModel.Sample3.MethodName}" DisplayDueDate="{Binding SampleModel.Sample3.DueDate}" />
+                <uctrl:SamplesCtrl Grid.Row="3" Margin="12"  DisplayValue="{Binding SampleModel.Sample4.Count}" DisplayMethodName="{Binding SampleModel.Sample4.MethodName}" DisplayDueDate="{Binding SampleModel.Sample4.DueDate}" />-->
+
+            </Grid>
+
+        </Border>
+        <!--content row end-->
+
+
+    </Grid>
+    <!--layoutRoot end-->
+</UserControl>
