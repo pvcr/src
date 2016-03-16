@@ -47,6 +47,16 @@ namespace PVCR.DragDropExample.ViewModels
 
         public SampleModel SampleGroup3 { get; set; }
 
+        public SampleModel SampleGroup4 { get; set; }
+
+        public SampleModel SampleGroup5 { get; set; }
+
+        public SampleModel SampleGroup6 { get; set; }
+
+        public SampleModel SampleGroup7 { get; set; }
+
+     
+
         public string InstrumentTitle { get; set; }
 
         public string SetupTitle { get; set; }
@@ -452,12 +462,37 @@ namespace PVCR.DragDropExample.ViewModels
 
             if (groups.Count() > 0)
             {
-                SampleGroup1 = new SampleModel { MethodName = groups.ElementAt(20).MethodName, Count = groups.ElementAt(20).Count };
+                SampleGroup1 = new SampleModel { MethodName = groups.ElementAt(0).MethodName, Count = groups.ElementAt(0).Count };
 
-                SampleGroup2 = new SampleModel { MethodName = groups.ElementAt(10).MethodName, Count = groups.ElementAt(10).Count };
+                SampleGroup2 = new SampleModel { MethodName = groups.ElementAt(1).MethodName, Count = groups.ElementAt(1).Count };
 
-                SampleGroup3 = new SampleModel { MethodName = groups.ElementAt(5).MethodName, Count = groups.ElementAt(5).Count };
+                SampleGroup3 = new SampleModel { MethodName = groups.ElementAt(2).MethodName, Count = groups.ElementAt(2).Count };
 
+                SampleGroup4 = new SampleModel { MethodName = groups.ElementAt(3).MethodName, Count = groups.ElementAt(3).Count };
+
+                SampleGroup5 = new SampleModel { MethodName = groups.ElementAt(4).MethodName, Count = groups.ElementAt(4).Count };
+
+                SampleGroup6 = new SampleModel { MethodName = groups.ElementAt(5).MethodName, Count = groups.ElementAt(5).Count };
+
+                SampleGroup7 = new SampleModel { MethodName = groups.ElementAt(6).MethodName, Count = groups.ElementAt(6).Count };
+
+
+            }
+            else
+            {
+                SampleGroup1 = new SampleModel { MethodName = "Group1", Count =5 };
+                                                             
+                SampleGroup2 = new SampleModel { MethodName = "Group2", Count = 5 };
+
+                SampleGroup3 = new SampleModel { MethodName = "Group3", Count = 5 };
+
+                SampleGroup4 = new SampleModel { MethodName = "Group4", Count = 5 };
+
+                SampleGroup5 = new SampleModel { MethodName = "Group5", Count = 5 };
+
+                SampleGroup6 = new SampleModel { MethodName = "Group6", Count = 5 };
+
+                SampleGroup7 = new SampleModel { MethodName = "Group7", Count = 5 };
 
             }
         }
