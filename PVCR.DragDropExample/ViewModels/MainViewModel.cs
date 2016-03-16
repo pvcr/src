@@ -480,7 +480,7 @@ namespace PVCR.DragDropExample.ViewModels
             }
             else
             {
-                SampleGroup1 = new SampleModel { MethodName = "Group1", Count =5 };
+                SampleGroup1 = new SampleModel { MethodName = "Group1", Count =12 };
                                                              
                 SampleGroup2 = new SampleModel { MethodName = "Group2", Count = 5 };
 

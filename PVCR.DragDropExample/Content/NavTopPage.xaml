@@ -58,13 +58,13 @@
                    TextWrapping="Wrap"/>
                 </Border>
                 <Border BorderBrush="#3D3C3A" BorderThickness="1,1,1,1" Margin="0,0,0,0" Grid.Row="1" Height="55" VerticalAlignment="Center">
-                    <Border.Background>
+                    <!--<Border.Background>
                         <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
                             <GradientStop Color="#D17E1F" Offset="0.0" x:Name="Main1" />
                             <GradientStop Color="#D17E1F" Offset="0.5" x:Name="Main2" />
                             <GradientStop Color="#D17E1F" Offset="1.0" x:Name="Main3" />
                         </LinearGradientBrush>
-                    </Border.Background>
+                    </Border.Background>-->
                     <TextBlock x:Name="tabmain" MouseDown="tabmain_Click" TouchDown="tabmain_Click"
                    Text="Team View" 
                    FontSize="8"

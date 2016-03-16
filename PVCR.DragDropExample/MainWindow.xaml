@@ -22,7 +22,19 @@
         <localpage:HeaderPage Margin="5" Grid.Row="0"  />
 
         <!--body-->
-        <localpage:ContentPage Margin="5" Grid.Row="1"  />
+        <!--<localpage:ContentPage Margin="5" Grid.Row="1"  />-->
+
+        <Grid x:Name="layoutContentRoot" Background="#1E2120"  Grid.Row="1" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.88*" />
+                <ColumnDefinition Width="0.12*"/>
+            </Grid.ColumnDefinitions>
+            <UniformGrid x:Name="bodyContainer" Grid.Column="0" Rows="1" Columns="1"  Margin="0" ClipToBounds="False">
+                <localpage:ContentPage x:Name="contentPageRoot" Margin="0"  />
+            </UniformGrid>
+
+            <localpage:NavPage Grid.Column="1" Margin="0" />
+        </Grid>
 
 
         <!--footer-->

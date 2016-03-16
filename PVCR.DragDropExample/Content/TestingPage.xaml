@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PVCR.DragDropExample.Content"
+             xmlns:localctrl="clr-namespace:PVCR.DragDropExample.UserControls"
              mc:Ignorable="d" 
                     d:DesignHeight="100" d:DesignWidth="100">
     <Grid x:Name="layoutTestingRoot" >
@@ -35,13 +36,18 @@
             </Border.Background>
             <Grid >
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="0.33*"  />
-                    <RowDefinition Height="0.33*"  />
-                    <RowDefinition Height="0.33*"  />
+                    <RowDefinition Height="0.5*"  />
+                    <RowDefinition Height="0.5*"  />
+                    <!--<RowDefinition Height="0.33*"  />-->
                 </Grid.RowDefinitions>
 
+                <localctrl:TestingCtrl Grid.Row="0"  Margin="5"  DisplayImageName="Lab-icon185-2.png"  DisplayMethodName="{Binding TestingModel1.Message}"/>
 
-                <TextBlock Grid.Row="0"  Text="{Binding TestingModel1.Message}" 
+                <localctrl:TestingCtrl Grid.Row="1"  Margin="5" DisplayImageName="lab-icon64.png" DisplayMethodName="{Binding TestingModel2.Message}" />
+
+                <!--<localctrl:TestingCtrl Grid.Row="2"  Margin="5" DisplayImageName="Lab-icon185-2.png" DisplayMethodName="{Binding TestingModel3.Message}" />-->
+
+                <!--<TextBlock Grid.Row="0"  Text="{Binding TestingModel1.Message}" 
                    FontSize="10"
                    FontWeight="Bold"
                    Foreground="#EEEEEE"                   
@@ -61,7 +67,7 @@
                    Foreground="#EEEEEE"                   
                    VerticalAlignment="Center"
                    HorizontalAlignment="Center"
-                   TextWrapping="Wrap"/>
+                   TextWrapping="Wrap"/>-->
                 <!-- <TextBlock Grid.Row="5" Text="Row 4" HorizontalAlignment="Center" VerticalAlignment="Stretch"/>-->
 
 
