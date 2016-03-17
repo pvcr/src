@@ -93,6 +93,7 @@ namespace PVCR.DragDropExample.UserControls
         public TestingCtrl()
         {
             InitializeComponent();
+            DisplayDueDate = DateTime.Now.ToShortDateString();
             Loaded += TestingCtrl_Loaded;
         }
 

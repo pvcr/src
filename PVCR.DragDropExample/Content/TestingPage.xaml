@@ -41,9 +41,9 @@
                     <!--<RowDefinition Height="0.33*"  />-->
                 </Grid.RowDefinitions>
 
-                <localctrl:TestingCtrl Grid.Row="0"  Margin="5"  DisplayImageName="Lab-icon185-2.png"  DisplayMethodName="{Binding TestingModel1.Message}"/>
+                <localctrl:TestingCtrl Grid.Row="0"  Margin="5"  DisplayImageName="Lab-icon185-2.png"  DisplayMethodName="{Binding TestingModel1.Name}" DisplayValue="{Binding TestingModel1.Count}"/>
 
-                <localctrl:TestingCtrl Grid.Row="1"  Margin="5" DisplayImageName="lab-icon64.png" DisplayMethodName="{Binding TestingModel2.Message}" />
+                <localctrl:TestingCtrl Grid.Row="1"  Margin="5" DisplayImageName="lab-icon64.png" DisplayMethodName="{Binding TestingModel2.Name}" DisplayValue="{Binding TestingModel1.Count}" />
 
                 <!--<localctrl:TestingCtrl Grid.Row="2"  Margin="5" DisplayImageName="Lab-icon185-2.png" DisplayMethodName="{Binding TestingModel3.Message}" />-->
 

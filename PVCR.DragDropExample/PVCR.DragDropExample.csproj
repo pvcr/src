@@ -108,6 +108,9 @@
     <Compile Include="Content\InstrumentPage.xaml.cs">
       <DependentUpon>InstrumentPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Content\MapPage.xaml.cs">
+      <DependentUpon>MapPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Content\NavCommentsPage.xaml.cs">
       <DependentUpon>NavCommentsPage.xaml</DependentUpon>
     </Compile>
@@ -159,6 +162,9 @@
     <Compile Include="UserControls\InstrumentCtrl.xaml.cs">
       <DependentUpon>InstrumentCtrl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\MapsCtrl.xaml.cs">
+      <DependentUpon>MapsCtrl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\SamplesContainerCtrl.xaml.cs">
       <DependentUpon>SamplesContainerCtrl.xaml</DependentUpon>
     </Compile>
@@ -171,6 +177,10 @@
     <Compile Include="UserControls\SingleSampleCtrl.xaml.cs">
       <DependentUpon>SingleSampleCtrl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\TestingCtrl.xaml.cs">
+      <DependentUpon>TestingCtrl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\UIHelper.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Page Include="Content\ContentPage.xaml">
       <SubType>Designer</SubType>
@@ -191,6 +201,10 @@
     <Page Include="Content\InstrumentPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Content\MapPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Content\NavCommentsPage.xaml">
       <SubType>Designer</SubType>
@@ -256,6 +270,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UserControls\MapCtrl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\MapsCtrl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControls\SamplesContainerCtrl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -271,6 +293,10 @@
     <Page Include="UserControls\SingleSampleCtrl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\TestingCtrl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>

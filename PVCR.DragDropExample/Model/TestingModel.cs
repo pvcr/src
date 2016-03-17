@@ -8,7 +8,9 @@ namespace PVCR.DragDropExample.Model
 {
     public  class TestingModel
     {
-        public string Message { get; set; }
+        public string Name { get; set; }
+
+        public string MethodNumber { get; set; }
 
         public int Count { get; set; }
     }

@@ -13,5 +13,8 @@ namespace PVCR.DragDropExample.Model
         public int Count { get; set; }
 
 
+        public DateTime? ProductionDate { get; set; }
+
+
     }
 }

@@ -17,7 +17,7 @@
         </Border.Background>
         <Grid x:Name="layoutMapRoot" Background="#1E2120">
 
-            <localctrl:MapCtrl Margin="2" Grid.Column="0" />
+            <localctrl:MapsCtrl Margin="2" Grid.Column="0" />
 
 
 

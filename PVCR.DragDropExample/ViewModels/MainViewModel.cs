@@ -283,6 +283,16 @@ namespace PVCR.DragDropExample.ViewModels
                         }
 
 
+                        var prdDate = oReader["PRODUCTION_DATE"];
+                        if (prdDate != DBNull.Value)
+                        {
+                            sm.ProductionDate = Convert.ToDateTime(prdDate);
+                        }
+                        else
+                        {
+                            sm.ProductionDate = DateTime.MinValue;
+                        }
+
                         _lstSamples.Add(sm);
                     }//while loop
 
@@ -304,23 +314,18 @@ namespace PVCR.DragDropExample.ViewModels
             string connString = "Data Source = vwsql01-sql; Initial Catalog = SHIRE_PRD; Persist Security Info = True; User ID = reporter; Password = rep391prd;";
 
 
-            string query = @"select 
-                            distinct s.sample_number, s.status, t.analysis, t.STATUS, t.BATCH, t.X_METHOD_NUMBER, s.X_CAUGHT_ON, s.PRODUCT, l.X_LOT_NAME, s.LOCATION,
-                            l.PRODUCTION_DATE, s.SAMPLE_TYPE, a.ANALYSIS_TYPE, s.SPEC_TYPE
-                            from LimsUser.SAMPLE s, LimsUser.RESULT r, LimsUser.TEST t, LimsUser.LOT l, ANALYSIS a
-                            WHERE s.SAMPLE_NUMBER = t.SAMPLE_NUMBER
-                            and t.TEST_NUMBER = r.TEST_NUMBER
-                            and a.[NAME] = t.ANALYSIS
-                            and a.VERSION = t.VERSION
-                            and s.status IN('U','I')
-                            and s.LOT = l.LOT_NUMBER
-                            and s.sample_type NOT IN ('RAW_MAT','EM')
-                            and s.LOCATION NOT IN ('DISCARD','PPD','PAD','CCPD')
-                            and a.ANALYSIS_TYPE NOT IN ('PAD', 'MFG','CONTRACT','MICRO')
-                            and s.PRODUCT NOT IN ('WATER','MFG_QUAL')
-                            and s.spec_type NOT IN('BACKUP','BACKUP2','BACKUP3','SATELLITE')
-                            and a.ANALYSIS_TYPE = 'TEST_TECH'
-                            and s.sample_number > 1240666";
+            string query = @"SELECT 	b.name, t.x_method_number, count(bo.sample_number) as [count]
+	                                    FROM  	batch b, 
+      		                                    batch_objects bo, 
+      		                                    sample s, 
+      		                                    test t
+	                                    WHERE 	b.name = bo.batch and 
+      		                                    bo.sample_type = 'SAMPLE' and
+      		                                    bo.sample_number = s.sample_number  and
+      		                                    s.sample_number  = t.sample_number and
+      		                                    s.status in ('I','P') and t.status in ('I','P')
+	                                    GROUP BY b.name, t.x_method_number
+	                                    ORDER BY count(bo.sample_number) desc";
 
             ObservableCollection<TestingModel> lstTesting = new ObservableCollection<TestingModel>();
             try
@@ -343,14 +348,34 @@ namespace PVCR.DragDropExample.ViewModels
 
                         TestingModel tm = new TestingModel();
 
-                        var mnum = oReader["X_METHOD_NUMBER"];
-                        if (mnum != null)
+                        var name = oReader["name"];
+                        if (name != null)
                         {
-                            tm.Message = mnum.ToString();
+                            tm.Name = name.ToString();
                         }
                         else
                         {
-                            tm.Message = "No Data";
+                            tm.Name = "No Data";
+                        }
+
+                        var mnum = oReader["x_method_number"];
+                        if (mnum != null)
+                        {
+                            tm.MethodNumber = mnum.ToString();
+                        }
+                        else
+                        {
+                            tm.MethodNumber = "No Data";
+                        }
+
+                        var count = oReader["count"];
+                        if (count != DBNull.Value)
+                        {
+                            tm.Count = Convert.ToInt32(count);
+                        }
+                        else
+                        {
+                            tm.Count = 0;
                         }
 
 
@@ -450,7 +475,27 @@ namespace PVCR.DragDropExample.ViewModels
         {
             ObservableCollection<SampleModel> _lstSamples = LoadSampleData();
 
-            var groups = from sm in _lstSamples
+            //Get only PROD Date not null
+
+            var grps = from sm in _lstSamples
+                       where sm.ProductionDate != DateTime.MinValue
+                       select sm;
+
+            var redItems = from sm in grps
+                           where sm.ProductionDate < DateTime.Now
+                           select sm;
+
+
+            var greenItems = from sm in grps
+                           where sm.ProductionDate > DateTime.Now.AddDays(15)
+                           select sm;
+
+            var yellowItems = from sm in grps
+                             where (sm.ProductionDate > DateTime.Now) && sm.ProductionDate <DateTime.Now.AddDays(14) 
+                             select sm;
+
+
+            var redGroups = from sm in redItems
                          group sm by sm.MethodName
                               into g
                          select new SampleModel
@@ -460,23 +505,36 @@ namespace PVCR.DragDropExample.ViewModels
 
                          };
 
-            if (groups.Count() > 0)
+            var greenGroups = from sm in greenItems
+                            group sm by sm.MethodName
+                             into g
+                            select new SampleModel
+                            {
+                                MethodName = g.Key,
+                                Count = g.Count()
+
+                            };
+
+
+            var yellowGroups = from sm in yellowItems
+                              group sm by sm.MethodName
+                            into g
+                              select new SampleModel
+                              {
+                                  MethodName = g.Key,
+                                  Count = g.Count()
+
+                              };
+
+            if (redGroups.Count() >3 )
             {
-                SampleGroup1 = new SampleModel { MethodName = groups.ElementAt(0).MethodName, Count = groups.ElementAt(0).Count };
+                SampleGroup1 = new SampleModel { MethodName = redGroups.ElementAt(0).MethodName, Count = redGroups.ElementAt(0).Count };
 
-                SampleGroup2 = new SampleModel { MethodName = groups.ElementAt(1).MethodName, Count = groups.ElementAt(1).Count };
+                SampleGroup2 = new SampleModel { MethodName = redGroups.ElementAt(1).MethodName, Count = redGroups.ElementAt(1).Count };
 
-                SampleGroup3 = new SampleModel { MethodName = groups.ElementAt(2).MethodName, Count = groups.ElementAt(2).Count };
+                SampleGroup3 = new SampleModel { MethodName = redGroups.ElementAt(2).MethodName, Count = redGroups.ElementAt(2).Count };
 
-                SampleGroup4 = new SampleModel { MethodName = groups.ElementAt(3).MethodName, Count = groups.ElementAt(3).Count };
-
-                SampleGroup5 = new SampleModel { MethodName = groups.ElementAt(4).MethodName, Count = groups.ElementAt(4).Count };
-
-                SampleGroup6 = new SampleModel { MethodName = groups.ElementAt(5).MethodName, Count = groups.ElementAt(5).Count };
-
-                SampleGroup7 = new SampleModel { MethodName = groups.ElementAt(6).MethodName, Count = groups.ElementAt(6).Count };
-
-
+               
             }
             else
             {
@@ -486,13 +544,29 @@ namespace PVCR.DragDropExample.ViewModels
 
                 SampleGroup3 = new SampleModel { MethodName = "Group3", Count = 5 };
 
-                SampleGroup4 = new SampleModel { MethodName = "Group4", Count = 5 };
+                //SampleGroup4 = new SampleModel { MethodName = "Group4", Count = 5 };
 
-                SampleGroup5 = new SampleModel { MethodName = "Group5", Count = 5 };
+                //SampleGroup5 = new SampleModel { MethodName = "Group5", Count = 5 };
 
-                SampleGroup6 = new SampleModel { MethodName = "Group6", Count = 5 };
+                //SampleGroup6 = new SampleModel { MethodName = "Group6", Count = 5 };
 
-                SampleGroup7 = new SampleModel { MethodName = "Group7", Count = 5 };
+                //SampleGroup7 = new SampleModel { MethodName = "Group7", Count = 5 };
+
+            }
+
+
+            if(greenGroups.Count() >4)
+            {
+
+                SampleGroup4 = new SampleModel { MethodName = greenGroups.ElementAt(0).MethodName, Count = greenGroups.ElementAt(0).Count };
+
+                SampleGroup5 = new SampleModel { MethodName = greenGroups.ElementAt(1).MethodName, Count = greenGroups.ElementAt(1).Count };
+
+                SampleGroup6 = new SampleModel { MethodName = greenGroups.ElementAt(2).MethodName, Count = greenGroups.ElementAt(2).Count };
+
+                SampleGroup7 = new SampleModel { MethodName = greenGroups.ElementAt(3).MethodName, Count = greenGroups.ElementAt(3).Count };
+
+
 
             }
         }
@@ -501,33 +575,25 @@ namespace PVCR.DragDropExample.ViewModels
         {
             ObservableCollection<TestingModel> _lst = LoadTestingDate();
 
-            var groups = from m in _lst
-                         group m by m.Message
-                              into g
-                         select new TestingModel
-                         {
-                             Message = g.Key,
-                             Count = g.Count()
 
-                         };
 
-            if (groups.Count() > 0)
+            if (_lst.Count() > 0)
             {
-                TestingModel1 = new TestingModel { Message = groups.ElementAt(0).Message, Count = groups.ElementAt(0).Count };
+                TestingModel1 = new TestingModel { Name = _lst[0].Name, MethodNumber=_lst[0].MethodNumber, Count =_lst[0].Count };
 
-                TestingModel2 = new TestingModel { Message = groups.ElementAt(0).Message, Count = groups.ElementAt(0).Count };
+                TestingModel2 = new TestingModel { Name = _lst[1].Name, MethodNumber = _lst[1].MethodNumber, Count = _lst[1].Count };
 
-                TestingModel3 = new TestingModel { Message = groups.ElementAt(0).Message, Count = groups.ElementAt(0).Count };
+                TestingModel3 = new TestingModel { Name = _lst[2].Name, MethodNumber = _lst[2].MethodNumber, Count = _lst[2].Count };
 
 
             }
             else
             {
-                TestingModel1 = new TestingModel { Message = "No Data", Count =0 };
+                //TestingModel1 = new TestingModel { Message = "No Data", Count =0 };
                                                                               
-                TestingModel2 = new TestingModel { Message = "No Data", Count =0 };
+                //TestingModel2 = new TestingModel { Message = "No Data", Count =0 };
                                                                             
-                TestingModel3 = new TestingModel { Message = "No Data", Count =0 };
+                //TestingModel3 = new TestingModel { Message = "No Data", Count =0 };
             }
         }
 

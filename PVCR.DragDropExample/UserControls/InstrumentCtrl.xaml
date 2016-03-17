@@ -37,7 +37,7 @@
                    HorizontalAlignment="Right"
                    TextWrapping="Wrap"/>
             <Grid Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <WrapPanel  x:Name="instImgContainer"  Margin="5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" >
+                <WrapPanel  x:Name="instImgContainer" MaxHeight="125" MaxWidth="125"  Margin="5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" >
 
                 </WrapPanel>
             </Grid>
