@@ -47,7 +47,7 @@ namespace PVCR.DragDropExample.UserControls
             get { return (string)GetValue(DisplayDueDateProperty); }
             set { SetValue(DisplayDueDateProperty, value); }
         }
-
+       
         public static readonly DependencyProperty DisplayDueDateProperty =
             DependencyProperty.Register("DisplayDueDate", typeof(string), typeof(TestingCtrl), new FrameworkPropertyMetadata("DueDate", OnDueDatePropertyChanged));
 
@@ -62,7 +62,6 @@ namespace PVCR.DragDropExample.UserControls
         {
             TestingCtrl control = source as TestingCtrl;
             control.methodName.Text = e.NewValue.ToString();
-          
         }
 
         private static void OnDueDatePropertyChanged(DependencyObject source, DependencyPropertyChangedEventArgs e)
@@ -96,6 +95,7 @@ namespace PVCR.DragDropExample.UserControls
             DisplayDueDate = DateTime.Now.ToShortDateString();
             Loaded += TestingCtrl_Loaded;
         }
+        
 
         private void TestingCtrl_Loaded(object sender, RoutedEventArgs e)
         {
