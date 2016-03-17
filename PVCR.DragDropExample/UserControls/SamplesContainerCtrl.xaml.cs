@@ -72,7 +72,7 @@ namespace PVCR.DragDropExample.UserControls
         private UIElement GetDisplayCtrl(int maxValue)
         {
             var samplesCtrl = new SamplesGroupCtrl();
-            samplesCtrl.Margin = new Thickness(0, 0, 0, 5);
+            samplesCtrl.Margin = new Thickness(0, 5, 0, 0);
             samplesCtrl.DisplayMethodName = DisplayMethodName;
             samplesCtrl.DisplayValue = maxValue;
             samplesCtrl.DisplayDueDate = DateTime.Now.ToShortDateString();

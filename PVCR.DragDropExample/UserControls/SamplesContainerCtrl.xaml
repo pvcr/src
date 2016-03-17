@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:PVCR.DragDropExample.UserControls"
              mc:Ignorable="d" 
              d:DesignHeight="100" d:DesignWidth="100">
-    <Grid Margin="5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-        <WrapPanel  x:Name="samplesGroupCtrlImgContainer" Margin="5,5,5,5"  />
+    <Grid Margin="0" VerticalAlignment="Center" HorizontalAlignment="Center">
+        <WrapPanel  x:Name="samplesGroupCtrlImgContainer" Margin="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  />
     </Grid>
 </UserControl>

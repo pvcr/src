@@ -37,7 +37,7 @@
                    VerticalAlignment="Center"
                    HorizontalAlignment="Left"
                    TextWrapping="Wrap"/>
-            <WrapPanel Grid.Row="1" x:Name="imgContainer"  Margin="5,0,0,0"  />
+            <WrapPanel Grid.Row="1" x:Name="imgContainer"  Margin="5,0,0,0" MinWidth="180" MaxWidth="180" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
             <TextBlock Grid.Row="2" Margin="5,0,5,0" x:Name="dueDate"
                    Text="DueDate1" 
                    FontSize="11"
