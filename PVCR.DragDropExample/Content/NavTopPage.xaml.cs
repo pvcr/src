@@ -60,6 +60,9 @@ namespace PVCR.DragDropExample.Content
                 ct.Children.Clear();
                 ct.Children.Add(GetMap());
             }
+            var bc = new BrushConverter();
+            ctv.Background = (Brush)bc.ConvertFrom("#D17E1F");
+            btv.Background = (Brush)bc.ConvertFrom("#004BA9");
 
 
         }
@@ -77,13 +80,16 @@ namespace PVCR.DragDropExample.Content
         private void tabmain_Click(object sender, EventArgs e)
         {
             UniformGrid ct = UIHelper.FindChild<UniformGrid>(Application.Current.MainWindow, "bodyContainer");
-
-
             if (ct != null)
             {
                 ct.Children.Clear();
                 ct.Children.Add(GetMain());
             }
+            var bc = new BrushConverter();
+            btv.Background = (Brush)bc.ConvertFrom("#D17E1F");           
+            ctv.Background = (Brush)bc.ConvertFrom("#004BA9");
+            
+
 
         }
 
