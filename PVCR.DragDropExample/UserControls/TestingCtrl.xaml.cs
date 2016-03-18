@@ -54,7 +54,7 @@ namespace PVCR.DragDropExample.UserControls
         private static void OnDisplayValuePropertyChanged(DependencyObject source, DependencyPropertyChangedEventArgs e)
         {
             TestingCtrl control = source as TestingCtrl;
-            control.DisplayValue = Convert.ToInt32(e.NewValue);
+            control.sampleCount.Text = e.NewValue.ToString();
           
         }
 
