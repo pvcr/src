@@ -120,6 +120,9 @@
     <Compile Include="Content\NavTopPage.xaml.cs">
       <DependentUpon>NavTopPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Content\ReveiwPage.xaml.cs">
+      <DependentUpon>ReveiwPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Content\SamplePage.xaml.cs">
       <DependentUpon>SamplePage.xaml</DependentUpon>
     </Compile>
@@ -215,6 +218,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Content\NavTopPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Content\ReveiwPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -65,6 +65,8 @@ namespace PVCR.DragDropExample.ViewModels
 
         public string WriteupTitle { get; set; }
 
+        public string ReveiwTitle { get; set; }
+
         public string ExceptionsTitle { get; set; }
 
         public TestingModel TestingModel1 { get; set; }
@@ -650,6 +652,8 @@ namespace PVCR.DragDropExample.ViewModels
             TestingTitle = "Testing";
 
             WriteupTitle = "Writeup";
+
+            ReveiwTitle = "Reveiw";
 
             ExceptionsTitle = "Exceptions";
         }
