@@ -117,8 +117,16 @@ namespace PVCR.DragDropExample.UserControls
 
                     testingImgContainer.Children.Add(GetDisplayImage(file));
                 }
+                if (Path.GetFileName(file) == "kanban_card .png")
+                {
+                    layoutTestingCtrlRoot.Background = new ImageBrush(new BitmapImage(new Uri(file)));
+                }
 
             }
+            this.methodName.Foreground = Brushes.Black;
+            this.sampleCount.Foreground = Brushes.Black;
+
+
 
 
 
