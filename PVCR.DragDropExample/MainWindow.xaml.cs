@@ -1,4 +1,5 @@
 ﻿using PVCR.DragDropExample.DB;
+using PVCR.DragDropExample.Utils;
 using PVCR.DragDropExample.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -27,17 +28,26 @@ namespace PVCR.DragDropExample
     public partial class MainWindow : Window
     {
         private MainViewModel _vwModel;
+        private LogWriter _loger;
         public MainWindow()
         {
-            InitializeComponent();
+            _loger = new LogWriter();
+            try
+            {
+                InitializeComponent();
 
-            _vwModel = new MainViewModel();
+                _loger.LogWrite("MainWindow() start....");
+                _vwModel = new MainViewModel(_loger);
 
-            DataContext = _vwModel;
+                DataContext = _vwModel;
+                _loger.LogWrite("MainWindow() finished....");
+            }
+            catch(Exception ex)
+            {
+                _loger.LogWrite(ex.Message);
+            }
+           
 
-
-            // this.ScheduleView.Background= new SolidColorBrush(new Color());
-            // AddManualAppointments();
         }
 
        
@@ -49,81 +59,5 @@ namespace PVCR.DragDropExample
      
     }
 
-    //public class CustomAppointment : Appointment
-    //{
-    //    private Brush backgroundBrush;
-    //    private string lecturePart;
-    //    private string pathData;
-    //    private int pathWidth;
-    //    private int pathHeight;
-
-    //    public CustomAppointment()
-    //    {
-    //        this.backgroundBrush = new SolidColorBrush(Color.FromArgb(255,255,255, 0));
-    //        this.lecturePart = "Demo";
-    //        this.pathData = string.Empty;
-    //        this.pathWidth = 14;
-    //        this.pathHeight = 16;
-    //    }
-
-    //    public Brush BackgroundBrush
-    //    {
-    //        get
-    //        {
-    //            return this.backgroundBrush;
-    //        }
-    //        set
-    //        {
-    //            this.backgroundBrush = value;
-    //        }
-    //    }
-
-    //    public string LecturePart
-    //    {
-    //        get
-    //        {
-    //            return this.lecturePart;
-    //        }
-    //        set
-    //        {
-    //            this.lecturePart = value;
-    //        }
-    //    }
-
-    //    public string PathData
-    //    {
-    //        get
-    //        {
-    //            return this.pathData;
-    //        }
-    //        set
-    //        {
-    //            this.pathData = value;
-    //        }
-    //    }
-
-    //    public int PathWidth
-    //    {
-    //        get
-    //        {
-    //            return this.pathWidth;
-    //        }
-    //        set
-    //        {
-    //            this.pathWidth = value;
-    //        }
-    //    }
-
-    //    public int PathHeight
-    //    {
-    //        get
-    //        {
-    //            return this.pathHeight;
-    //        }
-    //        set
-    //        {
-    //            this.pathHeight = value;
-    //        }
-    //    }
-    //}
+  
 }
