@@ -24,7 +24,7 @@ namespace PVCR.DragDropExample.Services
 	                                    GROUP BY b.name, t.x_method_number
 	                                    ORDER BY count(bo.sample_number) desc";
 
-        
+
         public IEnumerable<TestingModel> GetAllTestings()
         {
             SqlDataAccessHelper sqlHelper = new SqlDataAccessHelper();
@@ -32,7 +32,8 @@ namespace PVCR.DragDropExample.Services
             using (var reader = sqlHelper.ExecuteReader(QUERY, CommandType.Text, null))
             {
                 var mapper = new DataReaderMapper<TestingModel>(reader);
-                yield return mapper.MapFrom(reader);
+                while (reader.Read())
+                    yield return mapper.MapFrom(reader);
             }
         }
     }

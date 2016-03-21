@@ -36,6 +36,7 @@ namespace PVCR.DragDropExample.Services
             using (var reader = sqlHelper.ExecuteReader(QUERY, CommandType.Text, null))
             {
                 var mapper = new DataReaderMapper<SampleModel>(reader);
+                while(reader.Read())
                 yield return mapper.MapFrom(reader);
             }
         }
