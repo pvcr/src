@@ -64,6 +64,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
@@ -120,8 +121,8 @@
     <Compile Include="Content\NavTopPage.xaml.cs">
       <DependentUpon>NavTopPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Content\ReveiwPage.xaml.cs">
-      <DependentUpon>ReveiwPage.xaml</DependentUpon>
+    <Compile Include="Content\ReviewPage.xaml.cs">
+      <DependentUpon>ReviewPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Content\SamplePage.xaml.cs">
       <DependentUpon>SamplePage.xaml</DependentUpon>
@@ -144,7 +145,11 @@
     <Compile Include="Content\WriteupPage.xaml.cs">
       <DependentUpon>WriteupPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DB\ConnectionManager.cs" />
+    <Compile Include="DB\DataReaderMapper.cs" />
+    <Compile Include="DB\DbColumnAttribute.cs" />
     <Compile Include="DB\DBHelper.cs" />
+    <Compile Include="DB\SqlDataAccessHelper.cs" />
     <Compile Include="Map.xaml.cs">
       <DependentUpon>Map.xaml</DependentUpon>
     </Compile>
@@ -162,6 +167,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Services\ISampleService.cs" />
+    <Compile Include="Services\IScheduleService.cs" />
+    <Compile Include="Services\ITestingService.cs" />
+    <Compile Include="Services\IWriteupService.cs" />
+    <Compile Include="Services\SampleService.cs" />
+    <Compile Include="Services\TestingService.cs" />
+    <Compile Include="Services\WriteupService.cs" />
     <Compile Include="UserControls\InstrumentCtrl.xaml.cs">
       <DependentUpon>InstrumentCtrl.xaml</DependentUpon>
     </Compile>
@@ -183,6 +195,8 @@
     <Compile Include="UserControls\TestingCtrl.xaml.cs">
       <DependentUpon>TestingCtrl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Utils\Extensions.cs" />
+    <Compile Include="Utils\LogWriter.cs" />
     <Compile Include="Utils\UIHelper.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Page Include="Content\ContentPage.xaml">
@@ -221,7 +235,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Content\ReveiwPage.xaml">
+    <Page Include="Content\ReviewPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

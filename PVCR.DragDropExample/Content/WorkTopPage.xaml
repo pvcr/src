@@ -11,17 +11,17 @@
             <RowDefinition Height="*"  />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.20*" />
-            <ColumnDefinition Width="0.20*" />
-            <ColumnDefinition Width="0.20*" />
-            <ColumnDefinition Width="0.20*" />
-            <ColumnDefinition Width="0.20*" />
+            <ColumnDefinition Width="0.2*" />
+            <ColumnDefinition Width="0.2*" />
+            <ColumnDefinition Width="0.2*" />
+            <ColumnDefinition Width="0.2*" />
+            <ColumnDefinition Width="0.2*" />
             <!--<ColumnDefinition Width="0.2*" />-->
         </Grid.ColumnDefinitions>
         <local:SetupPage Grid.Column="0" Margin="0" />
         <local:TestingPage Grid.Column="1" Margin="0" />
         <local:WriteupPage Grid.Column="2" Margin="0" />
-        <local:ReveiwPage Grid.Column="3" Margin="0" />
+        <local:ReviewPage Grid.Column="3" Margin="0" />
         <local:ExceptionsPage Grid.Column="4" Margin="0" />
         <!--<local:NavPage Grid.Column="4" Margin="0" />-->
 

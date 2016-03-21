@@ -8,13 +8,13 @@
              d:DesignHeight="100" d:DesignWidth="100">
     <Grid x:Name="layoutNavTopRoot" >
         <Grid.RowDefinitions>
-            <RowDefinition Height="30"  />
+            <RowDefinition Height="60"  />
             <RowDefinition Height="*"  />
         </Grid.RowDefinitions>
 
         <!--Title row-->
 
-        <Rectangle RadiusX="20" RadiusY="20" Width="30" Height="30" Grid.Row="0">
+        <Rectangle RadiusX="40" RadiusY="40" Width="60" Height="60" Grid.Row="0">
             <Rectangle.Fill>
                 <ImageBrush  ImageSource="/images/person.png"  />
             </Rectangle.Fill>
@@ -40,15 +40,15 @@
                     <RowDefinition Height="0.25*"  />
 
                 </Grid.RowDefinitions>
-                <Border BorderBrush="#3D3C3A" BorderThickness="1,1,1,1" Margin="0,0,0,0" Grid.Row="0">
-                    <Border.Background>
+                <Border  x:Name="btv" Background="#D17E1F" BorderBrush="#3D3C3A" BorderThickness="1,1,1,1" Margin="0,0,0,0" Grid.Row="0">
+                    <!--<Border.Background>
                         <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
                             <GradientStop Color="#004BA9" Offset="0.0" />
                             <GradientStop Color="#004BA9" Offset="0.5" />
                             <GradientStop Color="#004BA9" Offset="1.0" />
                         </LinearGradientBrush>
-                    </Border.Background>
-                    <TextBlock  
+                    </Border.Background>-->
+                    <TextBlock  x:Name="tabmain" MouseDown="tabmain_Click" TouchDown="tabmain_Click"
                    Text="My View" 
                    FontSize="8"
                    FontWeight="Bold"
@@ -57,7 +57,7 @@
                    HorizontalAlignment="Center"
                    TextWrapping="Wrap"/>
                 </Border>
-                <Border x:Name="btv" Background="#D17E1F" BorderBrush="#3D3C3A" BorderThickness="1,1,1,1" Margin="0,0,0,0" Grid.Row="1" Height="55" VerticalAlignment="Center">
+                <Border Background="#004BA9" BorderBrush="#3D3C3A" BorderThickness="1,1,1,1" Margin="0,0,0,0" Grid.Row="1" Height="55" VerticalAlignment="Center">
                     <!--<Border.Background>
                         <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
                             <GradientStop Color="#D17E1F" Offset="0.0" x:Name="Main1" />
@@ -65,7 +65,7 @@
                             <GradientStop Color="#D17E1F" Offset="1.0" x:Name="Main3" />
                         </LinearGradientBrush>
                     </Border.Background>-->
-                    <TextBlock x:Name="tabmain" MouseDown="tabmain_Click" TouchDown="tabmain_Click"
+                    <TextBlock 
                    Text="Team View" 
                    FontSize="8"
                    FontWeight="Bold"
