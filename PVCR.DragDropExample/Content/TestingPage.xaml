@@ -46,7 +46,7 @@
 
                         <ListView.ItemTemplate>
                             <DataTemplate>
-                                <localctrl:TestingCtrl Grid.Row="0"  Margin="1" DisplayImageName="Lab-icon185-2.png"  DisplayMethodName="{Binding Name}" DisplayValue="{Binding Count}"/>
+                                <localctrl:TestingCtrl Grid.Row="0"  Margin="0" DisplayImageName="Lab-icon-1-64.png" DisplayMethodName="{Binding Name}" DisplayValue="{Binding Count}"/>
 
                             </DataTemplate>
                         </ListView.ItemTemplate>

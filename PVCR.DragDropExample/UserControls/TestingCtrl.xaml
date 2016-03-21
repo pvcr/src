@@ -7,12 +7,12 @@
              mc:Ignorable="d" 
             d:DesignHeight="100" d:DesignWidth="100">
     <Border  BorderBrush="#1F73D1" BorderThickness="1" CornerRadius="2,2,2,2"  AllowDrop="True">
-        <Grid x:Name="layoutTestingCtrlRoot">
+        <Grid x:Name="layoutTestingCtrlRoot" MinWidth="105" MinHeight="105">
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="40" />
                 <RowDefinition Height="*" />
-                <RowDefinition Height="40" />
+                <RowDefinition Height="20" />
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="0" Margin="10,0,5,0" x:Name="methodName"
                    Text="UPLC" 
@@ -37,7 +37,7 @@
                    HorizontalAlignment="Right"
                    TextWrapping="Wrap"/>
             <Grid Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Center">
-                <WrapPanel  x:Name="testingImgContainer" MaxHeight="125" MaxWidth="125"  Margin="2"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" >
+                <WrapPanel  x:Name="testingImgContainer" Margin="0"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" >
 
                 </WrapPanel>
             </Grid>
