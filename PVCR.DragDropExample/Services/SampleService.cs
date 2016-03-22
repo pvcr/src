@@ -29,6 +29,41 @@ namespace PVCR.DragDropExample.Services
                             and a.ANALYSIS_TYPE = 'TEST_TECH'
                             and s.sample_number > 1240666";
 
+        private const string QUERY1 = @"SELECT     b.name,
+                                                   substring(t.x_method_number,1,20) method_Number,
+                                                   count (r.result_number) total_results_Count ,
+                                                   count( case when r.status in ('A','M','E') then 1 else null end)  completed_Results_Count,
+                                                   count(distinct bo.sample_number) samples_Per_Method_No
+                                        FROM      batch b,
+                                                  batch_objects bo,
+                                                  sample s,
+                                                  test t, result r
+                                        WHERE     b.name = bo.batch and
+                                                  bo.sample_type = 'SAMPLE' and
+                                                  bo.sample_number = s.sample_number  and
+                                                  s.sample_number  = t.sample_number and t.test_number = r.test_number and
+                                                  s.status in ('I','P') and t.status in ('I','P') and bo.batch = 'L16-AQUAL-009'
+                                    GROUP BY b.name, t.x_method_number
+                                    ORDER BY b.name,  count(bo.sample_number) desc";
+
+
+        private const string QUERY2 = @"SELECT     b.name,
+                                                   substring(t.x_method_number,1,20) method_Number,
+                                                   count (r.result_number) total_results_Count ,
+                                                   count( case when r.status in ('A','M','E') then 1 else null end)  completed_Results_Count,
+                                                   count(distinct bo.sample_number) samples_Per_Method_No
+                                        FROM      batch b,
+                                                  batch_objects bo,
+                                                  sample s,
+                                                  test t, result r
+                                        WHERE     b.name = bo.batch and
+                                                  bo.sample_type = 'SAMPLE' and
+                                                  bo.sample_number = s.sample_number  and
+                                                  s.sample_number  = t.sample_number and t.test_number = r.test_number and
+                                                  s.status in ('I','P') and t.status in ('I','P') and bo.batch = 'L16-AQUAL-008'
+                                    GROUP BY b.name, t.x_method_number
+                                    ORDER BY b.name,  count(bo.sample_number) desc";
+
         public IEnumerable<SampleModel> GetAllSamples()
         {
             SqlDataAccessHelper sqlHelper = new SqlDataAccessHelper();
