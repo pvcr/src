@@ -60,19 +60,19 @@ namespace PVCR.DragDropExample.ViewModels
 
         public string SampleTitle { get; set; }
 
-        //public SampleModel SampleGroup1 { get; set; }
+        public SampleModel SampleGroup1 { get; set; }
 
-        //public SampleModel SampleGroup2 { get; set; }
+        public SampleModel SampleGroup2 { get; set; }
 
-        //public SampleModel SampleGroup3 { get; set; }
+        public SampleModel SampleGroup3 { get; set; }
 
-        //public SampleModel SampleGroup4 { get; set; }
+        public SampleModel SampleGroup4 { get; set; }
 
-        //public SampleModel SampleGroup5 { get; set; }
+        public SampleModel SampleGroup5 { get; set; }
 
-        //public SampleModel SampleGroup6 { get; set; }
+        public SampleModel SampleGroup6 { get; set; }
 
-        //public SampleModel SampleGroup7 { get; set; }
+        public SampleModel SampleGroup7 { get; set; }
 
 
 
@@ -94,7 +94,7 @@ namespace PVCR.DragDropExample.ViewModels
 
         public TestingModel TestingModel3 { get; set; }
 
-        
+        public TestingModel TestingModel4 { get; private set; }
 
         public WriteupModel WriteupModel1 { get; set; }
 
@@ -115,6 +115,7 @@ namespace PVCR.DragDropExample.ViewModels
         public ObservableCollection<SampleModel> YellowSamples { get; set; }
 
         public ObservableCollection<SampleModel> RedSamples { get; set; }
+       
 
         #endregion
 
@@ -226,6 +227,11 @@ namespace PVCR.DragDropExample.ViewModels
                             };
             RedSamples = redGroups.ToObservableCollection<SampleModel>();
 
+            SampleGroup1 = RedSamples[0];
+            SampleGroup2 = RedSamples[1];
+            SampleGroup3 = RedSamples[2];
+
+
             var greenGroups = from sm in greenItems
                               group sm by sm.MethodName
                              into g
@@ -236,6 +242,9 @@ namespace PVCR.DragDropExample.ViewModels
 
                               };
             GreenSamples = greenGroups.ToObservableCollection<SampleModel>();
+            SampleGroup4 = GreenSamples[0];
+            SampleGroup5 = GreenSamples[1];
+
 
             var yellowGroups = from sm in yellowItems
                                group sm by sm.MethodName
@@ -248,7 +257,8 @@ namespace PVCR.DragDropExample.ViewModels
                                };
 
             YellowSamples = yellowGroups.ToObservableCollection<SampleModel>();
-
+            SampleGroup6 = YellowSamples[0];
+            SampleGroup7 = YellowSamples[1];
         }
 
         private void GetSampleTestData()
@@ -261,15 +271,20 @@ namespace PVCR.DragDropExample.ViewModels
                 redlst.Add( new SampleModel { MethodName = "RedGroup "+i, Count = i*6 });
             }
 
+            SampleGroup1 = redlst[0];
+            SampleGroup2 = redlst[1];
+            SampleGroup3 = redlst[2];
             RedSamples = redlst;
 
             var yellowlst = new ObservableCollection<SampleModel>();
 
-            for (int i = 1; i < 2; i++)
+            for (int i = 1; i < 3; i++)
             {
                 yellowlst.Add(new SampleModel { MethodName = "YellowGroup " + i, Count = i * 6 });
             }
-
+            SampleGroup4 = yellowlst[0];
+            SampleGroup5 = yellowlst[1];
+           
             YellowSamples = yellowlst;
 
             var greenlst = new ObservableCollection<SampleModel>();
@@ -278,7 +293,8 @@ namespace PVCR.DragDropExample.ViewModels
             {
                 greenlst.Add(new SampleModel { MethodName = "GreenGroup " + i, Count = i * 6 });
             }
-
+            SampleGroup6 = greenlst[0];
+            SampleGroup7 = greenlst[1];
             GreenSamples = greenlst;
         }
 
@@ -289,8 +305,10 @@ namespace PVCR.DragDropExample.ViewModels
             if (_lst == null) { _loger.LogWrite("No testing data."); GetTestingTestData(); return; }
 
             Testings = _lst;
-
-          
+            TestingModel1 = Testings[0];
+            TestingModel2 = Testings[1];
+            TestingModel3 = Testings[2];
+            TestingModel4 = Testings[3];
         }
 
         private void GetTestingTestData()
@@ -305,7 +323,13 @@ namespace PVCR.DragDropExample.ViewModels
             }
 
             Testings = testlst;
-          
+
+            TestingModel1 = Testings[0];
+            TestingModel2 = Testings[1];
+            TestingModel3 = Testings[2];
+            TestingModel4 = Testings[3];
+
+
         }
 
         private void GetWriteup()

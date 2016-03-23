@@ -36,18 +36,21 @@
 
             <Grid x:Name="layoutInstrumentContent" >
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="0.33*"  />
-                    <RowDefinition Height="0.33*"  />
-                    <RowDefinition Height="0.33*"  />                   
+                    <RowDefinition Height="0.25*"  />
+                    <RowDefinition Height="0.25*"  />
+                    <RowDefinition Height="0.25*"  />
+                    <RowDefinition Height="0.25*"  />
                 </Grid.RowDefinitions>
 
 
 
-                <localctrl:InstrumentCtrl Grid.Row="0"  Margin="12"  DisplayImageName="Lab-icon185-2.png" />
+                <localctrl:InstrumentCtrl Grid.Row="0"  Margin="2" DisplayImageName="Lab-icon185-2.png" />
 
-                <localctrl:InstrumentCtrl Grid.Row="1"  Margin="12" DisplayImageName="lab-icon64.png" />
+                <localctrl:InstrumentCtrl Grid.Row="1"  Margin="2" DisplayImageName="lab-icon64.png" />
 
-                <localctrl:InstrumentCtrl Grid.Row="2"  Margin="12" DisplayImageName="Lab-icon185-2.png" />
+                <localctrl:InstrumentCtrl Grid.Row="2"  Margin="2" DisplayImageName="Lab-icon185-2.png" />
+
+                <localctrl:InstrumentCtrl Grid.Row="3"  Margin="2" DisplayImageName="lab-icon64.png" />
 
             </Grid>
         </Border>

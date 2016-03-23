@@ -10,7 +10,7 @@
         <Grid x:Name="layoutInstrumentCtrlRoot">
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="40" />
+                <RowDefinition Height="30" />
                 <RowDefinition Height="*" />
                 <!--<RowDefinition Height="20" />-->
             </Grid.RowDefinitions>
@@ -22,13 +22,13 @@
                    VerticalAlignment="Center"
                    HorizontalAlignment="Left"
                    TextWrapping="Wrap"/>
-            <Border Grid.Row="0" BorderThickness="1" BorderBrush="Black"  VerticalAlignment="Center" Margin="5,0,20,0"
+            <Border Grid.Row="0" BorderThickness="1" BorderBrush="Black"  VerticalAlignment="Center" Margin="5,0,30,0"
                    HorizontalAlignment="Right">
                 <!-- Uniform: Scale to fit output area.
              Aspect ratio is preserved.-->
-                <Image Source="/images/laboratory-icon32.png" MaxWidth="32" MaxHeight="32"  Stretch="Uniform" />
+                <Image Source="/images/laboratory-icon32.png" MaxWidth="32" MaxHeight="32" Stretch="Uniform" />
             </Border>
-            <TextBlock Grid.Row="0" Margin="5,0,5,0" x:Name="sampleCount"
+            <TextBlock Grid.Row="0" Margin="5,0,15,0" x:Name="sampleCount"
                    Text="0" 
                    FontSize="11"
                    FontWeight="Normal"
@@ -37,7 +37,7 @@
                    HorizontalAlignment="Right"
                    TextWrapping="Wrap"/>
             <Grid Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <WrapPanel  x:Name="instImgContainer" MaxHeight="125" MaxWidth="125"  Margin="5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" >
+                <WrapPanel  x:Name="instImgContainer" MaxHeight="125" MaxWidth="125"  Margin="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" >
 
                 </WrapPanel>
             </Grid>

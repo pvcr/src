@@ -43,13 +43,13 @@
                     <RowDefinition Height="0.3*"  />
                     <RowDefinition Height="0.3*"  />
                 </Grid.RowDefinitions>
-                <!--<StackPanel Grid.Row="0" Margin="0" Background="#d22819">-->
-                    <!--<localctrl:SamplesContainerCtrl x:Name="scg1"  Background="#d22819" Margin="0" MaxDisplayValue="{Binding SampleGroup1.Count}" DisplayMethodName="{Binding SampleGroup1.MethodName}" />
+                <StackPanel Grid.Row="0" Margin="0" Background="#d22819">
+                    <localctrl:SamplesContainerCtrl x:Name="scg1"  Background="#d22819" Margin="0" MaxDisplayValue="{Binding SampleGroup1.Count}" DisplayMethodName="{Binding SampleGroup1.MethodName}" />
                     <localctrl:SamplesContainerCtrl x:Name="scg2"  Background="#d22819" Margin="0" MaxDisplayValue="{Binding SampleGroup2.Count}" DisplayMethodName="{Binding SampleGroup2.MethodName}" />
-                    <localctrl:SamplesContainerCtrl x:Name="scg3"  Background="#d22819" Margin="0" MaxDisplayValue="{Binding SampleGroup3.Count}" DisplayMethodName="{Binding SampleGroup3.MethodName}" />-->
+                    <localctrl:SamplesContainerCtrl x:Name="scg3"  Background="#d22819" Margin="0" MaxDisplayValue="{Binding SampleGroup3.Count}" DisplayMethodName="{Binding SampleGroup3.MethodName}" />
 
-                    <ScrollViewer Grid.Row="0" Margin="0" Background="#d22819">
-                    <ListView Background="#d22819"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding RedSamples}">
+                    <!--<ScrollViewer Grid.Row="0" Margin="0" Background="#d22819">
+                    <ListView Background="#d22819"  ScrollViewer.HorizontalScrollBarVisibility="Disabled"  ItemsSource="{Binding RedSamples}">
                         <ListView.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <WrapPanel Background="#d22819" />
@@ -63,13 +63,14 @@
                         </ListView.ItemTemplate>
                       
                     </ListView>
-                </ScrollViewer>
-                <!--</StackPanel>
+                </ScrollViewer>-->
+                </StackPanel>
 
-                <StackPanel Grid.Row="1" Margin="0" Background="#f28818">-->
-                    <!--<localctrl:SamplesContainerCtrl x:Name="scg4"  Background="#f28818" Margin="0" MaxDisplayValue="{Binding SampleGroup4.Count}" DisplayMethodName="{Binding SampleGroup4.MethodName}" />
-                    <localctrl:SamplesContainerCtrl x:Name="scg5"  Background="#f28818" Margin="0" MaxDisplayValue="{Binding SampleGroup5.Count}" DisplayMethodName="{Binding SampleGroup5.MethodName}" />-->
-                    <ScrollViewer Grid.Row="1" Margin="0" Background="#f28818">
+                <StackPanel Grid.Row="1" Margin="0" Background="#f28818">
+                    <localctrl:SamplesContainerCtrl x:Name="scg4"  Background="#f28818" Margin="0" MaxDisplayValue="{Binding SampleGroup4.Count}" DisplayMethodName="{Binding SampleGroup4.MethodName}" />
+                    <localctrl:SamplesContainerCtrl x:Name="scg5"  Background="#f28818" Margin="0" MaxDisplayValue="{Binding SampleGroup5.Count}" DisplayMethodName="{Binding SampleGroup5.MethodName}" />
+                    
+                    <!--<ScrollViewer Grid.Row="1" Margin="0" Background="#f28818">
                     <ListView Background="#f28818" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding YellowSamples}">
                             <ListView.ItemsPanel>
                                 <ItemsPanelTemplate>
@@ -84,12 +85,12 @@
                             </ListView.ItemTemplate>
 
                         </ListView>
-                    </ScrollViewer>
-                <!--</StackPanel>-->
-                <!--<StackPanel Grid.Row="2" Margin="0" Background="#5b9e47">-->
-                    <!--<localctrl:SamplesContainerCtrl x:Name="scg6" Background="#5b9e47" Margin="0" MaxDisplayValue="{Binding SampleGroup6.Count}" DisplayMethodName="{Binding SampleGroup6.MethodName}" />
-                    <localctrl:SamplesContainerCtrl x:Name="scg7" Background="#5b9e47" Margin="0" MaxDisplayValue="{Binding SampleGroup7.Count}" DisplayMethodName="{Binding SampleGroup7.MethodName}" />-->
-                    <ScrollViewer Grid.Row="2" Margin="0" Background="#5b9e47">
+                    </ScrollViewer>-->
+                </StackPanel>
+                <StackPanel Grid.Row="2" Margin="0" Background="#5b9e47">
+                    <localctrl:SamplesContainerCtrl x:Name="scg6" Background="#5b9e47" Margin="0" MaxDisplayValue="{Binding SampleGroup6.Count}" DisplayMethodName="{Binding SampleGroup6.MethodName}" />
+                    <localctrl:SamplesContainerCtrl x:Name="scg7" Background="#5b9e47" Margin="0" MaxDisplayValue="{Binding SampleGroup7.Count}" DisplayMethodName="{Binding SampleGroup7.MethodName}" />
+                    <!--<ScrollViewer Grid.Row="2" Margin="0" Background="#5b9e47">
                     <ListView Background="#5b9e47" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding GreenSamples}">
                             <ListView.ItemsPanel>
                                 <ItemsPanelTemplate>
@@ -104,8 +105,8 @@
                             </ListView.ItemTemplate>
 
                         </ListView>
-                    </ScrollViewer>
-                <!--</StackPanel>-->
+                    </ScrollViewer>-->
+                </StackPanel>
 
 
 

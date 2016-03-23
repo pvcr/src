@@ -8,7 +8,7 @@
             d:DesignHeight="100" d:DesignWidth="100" AllowDrop="True">
     <Grid x:Name="layoutSetupCtrlRoot">
 
-        <WrapPanel Orientation="Horizontal" x:Name="setupCtrlWp"  MinHeight="114" MinWidth="114" Background="Transparent">
+        <WrapPanel Orientation="Horizontal" x:Name="setupCtrlWp"  Background="Transparent">
 
 
         </WrapPanel>

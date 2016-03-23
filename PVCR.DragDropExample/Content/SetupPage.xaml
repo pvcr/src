@@ -35,13 +35,15 @@
             </Border.Background>
             <Grid >
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="0.33*"  />
-                    <RowDefinition Height="0.33*"  />
-                    <RowDefinition Height="0.33*"  />
+                    <RowDefinition Height="0.25*"  />
+                    <RowDefinition Height="0.25*"  />
+                    <RowDefinition Height="0.25*"  />
+                    <RowDefinition Height="0.25*"  />
                 </Grid.RowDefinitions>
                 <localctrl:SetupCtrl Margin="2" Grid.Row="0"  />
                 <localctrl:SetupCtrl Margin="2" Grid.Row="1"  />
                 <localctrl:SetupCtrl Margin="2" Grid.Row="2"  />
+                <localctrl:SetupCtrl Margin="2" Grid.Row="3"  />
                 <!--
                 <TextBlock Grid.Row="1" Text="Row 1" HorizontalAlignment="Center" VerticalAlignment="Stretch"/>
                 <TextBlock Grid.Row="2" Text="Row 2" HorizontalAlignment="Center" VerticalAlignment="Stretch"/>
