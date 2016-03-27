@@ -56,7 +56,7 @@ namespace PVCR.DragDropExample.UserControls
 
                     //ScaleTransform scaleTransform1 = new ScaleTransform();
                     //insc.RenderTransform = scaleTransform1;
-                    insc.Width =145;
+                    insc.Width =174;
                     // insc.instImgContainer.RenderTransform = scaleTransform1;
 
                     if (_element != null)
