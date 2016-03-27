@@ -40,7 +40,7 @@
                     <RowDefinition Height="0.25*"  />
 
                 </Grid.RowDefinitions>
-                <Border  x:Name="btv" Background="#D17E1F" BorderBrush="#3D3C3A" BorderThickness="1,1,1,1" Margin="0,0,0,0" Grid.Row="0">                  
+                <Border  x:Name="bmyview" Background="#D17E1F" BorderBrush="#3D3C3A" BorderThickness="1,1,1,1" Margin="0,0,0,0" Grid.Row="0">                  
                    <TextBlock  x:Name="tabmain" MouseDown="tabmain_Click" TouchDown="tabmain_Click"
                    Text="My View" 
                    FontSize="8"
@@ -50,8 +50,8 @@
                    HorizontalAlignment="Center"
                    TextWrapping="Wrap"/>
                 </Border>
-                <Border x:Name="bteamv" Background="#004BA9" BorderBrush="#3D3C3A" BorderThickness="1,1,1,1" Margin="0,0,0,0" Grid.Row="1">                   
-                   <TextBlock 
+                <Border x:Name="bteamview" Background="#004BA9" BorderBrush="#3D3C3A" BorderThickness="1,1,1,1" Margin="0,0,0,0" Grid.Row="1">
+                    <TextBlock x:Name="tabteamview" MouseDown="tabteamview_Click" TouchDown="tabteamview_Click"
                    Text="Team View" 
                    FontSize="8"
                    FontWeight="Bold"
@@ -61,7 +61,7 @@
                    TextWrapping="Wrap"/>
                 </Border>
 
-                <Border x:Name="ctv" Background="#004BA9" BorderBrush="#3D3C3A" BorderThickness="1,1,1,1" Margin="0,0,0,0" Grid.Row="2">
+                <Border x:Name="bmapview" Background="#004BA9" BorderBrush="#3D3C3A" BorderThickness="1,1,1,1" Margin="0,0,0,0" Grid.Row="2">
                     <!--<Border.Background>
                         <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
                             <GradientStop Color="#004BA9" Offset="0.0" x:Name="Map1"/>
@@ -78,7 +78,7 @@
                    HorizontalAlignment="Center"
                    TextWrapping="Wrap"/>
                 </Border>
-                <Border Background="#004BA9" BorderBrush="#3D3C3A" BorderThickness="1,1,1,1" Margin="0,0,0,0" Grid.Row="3">
+                <Border x:Name="bmoreview" Background="#004BA9" BorderBrush="#3D3C3A" BorderThickness="1,1,1,1" Margin="0,0,0,0" Grid.Row="3">
                     <!--<Border.Background>
                         <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
                             <GradientStop Color="#004BA9" Offset="0.0" />
@@ -87,7 +87,7 @@
                         </LinearGradientBrush>
                     </Border.Background>-->
                     <TextBlock Grid.Row="4" 
-                   Text="More" 
+                   Text="More" x:Name="tabmore" MouseDown="tabmore_Click" TouchDown="tabmore_Click"
                    FontSize="8"
                    FontWeight="Bold"
                    Foreground="#EEEEEE"                   

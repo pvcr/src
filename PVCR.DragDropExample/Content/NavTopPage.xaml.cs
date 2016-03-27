@@ -27,33 +27,49 @@ namespace PVCR.DragDropExample.Content
         {
             InitializeComponent();
         }
-        //private void tabmap_Click(object sender, EventArgs e)
-        //{
-        //    Map m = new Map();
-        //    m.Show();
-        //    Application.Current.Windows[0].Close();
+      
 
-
-        //}
-
-        //private void tabmain_Click(object sender, EventArgs e)
-        //{
-        //    MainWindow w = new MainWindow();
-        //    w.Show();
-        //    Application.Current.Windows[0].Close();
-
-        //}
-
-
-
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        private UIElement GetMap()
+        {
+            return new MapPage();
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        private UIElement GetMain()
+        {
+            return new ContentPage();
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        private UIElement GetTeamView()
+        {
+            return new TeamViewPage();
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        private UIElement GetMoreView()
+        {
+            return new MoreViewPage();
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tabmap_Click(object sender, EventArgs e)
         {
-            //MapPage m = new MapPage();
-            //m.Show();
-            //Application.Current.Windows[0].Close();
-
             UniformGrid ct = UIHelper.FindChild<UniformGrid>(Application.Current.MainWindow, "bodyContainer");
-
 
             if (ct != null)
             {
@@ -61,22 +77,18 @@ namespace PVCR.DragDropExample.Content
                 ct.Children.Add(GetMap());
             }
             var bc = new BrushConverter();
-            ctv.Background = (Brush)bc.ConvertFrom("#D17E1F");
-            btv.Background = (Brush)bc.ConvertFrom("#004BA9");
+            bmapview.Background = (Brush)bc.ConvertFrom("#D17E1F");
+            bmyview.Background = (Brush)bc.ConvertFrom("#004BA9");
+            bteamview.Background= (Brush)bc.ConvertFrom("#004BA9");
+            bmoreview.Background= (Brush)bc.ConvertFrom("#004BA9");
 
 
         }
-
-        private UIElement GetMap()
-        {
-            return new MapPage();
-        }
-
-        private UIElement GetMain()
-        {
-            return new ContentPage();
-        }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tabmain_Click(object sender, EventArgs e)
         {
             UniformGrid ct = UIHelper.FindChild<UniformGrid>(Application.Current.MainWindow, "bodyContainer");
@@ -86,11 +98,40 @@ namespace PVCR.DragDropExample.Content
                 ct.Children.Add(GetMain());
             }
             var bc = new BrushConverter();
-            btv.Background = (Brush)bc.ConvertFrom("#D17E1F");           
-            ctv.Background = (Brush)bc.ConvertFrom("#004BA9");
-            
+            bmyview.Background = (Brush)bc.ConvertFrom("#D17E1F");
+            bmapview.Background = (Brush)bc.ConvertFrom("#004BA9");
+            bteamview.Background = (Brush)bc.ConvertFrom("#004BA9");
+            bmoreview.Background = (Brush)bc.ConvertFrom("#004BA9");
+        }
 
+        private void tabmore_Click(object sender, EventArgs e)
+        {
+            UniformGrid ct = UIHelper.FindChild<UniformGrid>(Application.Current.MainWindow, "bodyContainer");
+            if (ct != null)
+            {
+                ct.Children.Clear();
+                ct.Children.Add(GetMoreView());
+            }
+            var bc = new BrushConverter();
+            bmoreview.Background = (Brush)bc.ConvertFrom("#D17E1F");
+            bmapview.Background = (Brush)bc.ConvertFrom("#004BA9");
+            bteamview.Background = (Brush)bc.ConvertFrom("#004BA9");
+            bmyview.Background = (Brush)bc.ConvertFrom("#004BA9");
+        }
 
+        private void tabteamview_Click(object sender, EventArgs e)
+        {
+            UniformGrid ct = UIHelper.FindChild<UniformGrid>(Application.Current.MainWindow, "bodyContainer");
+            if (ct != null)
+            {
+                ct.Children.Clear();
+                ct.Children.Add(GetTeamView());
+            }
+            var bc = new BrushConverter();
+            bteamview.Background = (Brush)bc.ConvertFrom("#D17E1F");
+            bmapview.Background = (Brush)bc.ConvertFrom("#004BA9");
+            bmyview.Background = (Brush)bc.ConvertFrom("#004BA9");
+            bmoreview.Background = (Brush)bc.ConvertFrom("#004BA9");
         }
 
 
