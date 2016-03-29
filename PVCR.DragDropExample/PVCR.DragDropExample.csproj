@@ -114,7 +114,9 @@
     <Compile Include="Content\MapPage.xaml.cs">
       <DependentUpon>MapPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Content\MoreViewPage.cs" />
+    <Compile Include="Content\MoreViewPage.xaml.cs">
+      <DependentUpon>MoreViewPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Content\NavCommentsPage.xaml.cs">
       <DependentUpon>NavCommentsPage.xaml</DependentUpon>
     </Compile>
@@ -126,6 +128,9 @@
     </Compile>
     <Compile Include="Content\ReadyPage.xaml.cs">
       <DependentUpon>ReadyPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Content\ReveiwPage.xaml.cs">
+      <DependentUpon>ReveiwPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Content\ReviewPage.xaml.cs">
       <DependentUpon>ReviewPage.xaml</DependentUpon>
@@ -216,6 +221,12 @@
     <Compile Include="UserControls\TestingCtrl.xaml.cs">
       <DependentUpon>TestingCtrl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\TVSamplesContainerCtrl.xaml.cs">
+      <DependentUpon>TVSamplesContainerCtrl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\TVSamplesGroupCtrl.xaml.cs">
+      <DependentUpon>TVSamplesGroupCtrl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Utils\Extensions.cs" />
     <Compile Include="Utils\LogWriter.cs" />
     <Compile Include="Utils\UIHelper.cs" />
@@ -244,6 +255,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Content\MoreViewPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Content\NavCommentsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -259,6 +274,10 @@
     <Page Include="Content\ReadyPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Content\ReveiwPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Content\ReviewPage.xaml">
       <SubType>Designer</SubType>
@@ -361,6 +380,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\TestingCtrl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\TVSamplesContainerCtrl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\TVSamplesGroupCtrl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
