@@ -8,8 +8,8 @@
               d:DesignHeight="100" d:DesignWidth="100">
     <Grid x:Name="layoutNavRoot" >
         <Grid.RowDefinitions>
-            <RowDefinition Height="260"  />
-            <RowDefinition Height="*"  />
+            <RowDefinition Height="0.4*"  />
+            <RowDefinition Height="0.6*"  />
         </Grid.RowDefinitions>
         <local:NavTopPage Margin="0" Grid.Row="0" />
 
