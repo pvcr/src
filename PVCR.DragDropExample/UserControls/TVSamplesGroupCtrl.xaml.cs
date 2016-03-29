@@ -120,7 +120,7 @@ namespace PVCR.DragDropExample.UserControls
         private UIElement GetDisplayImage(string path)
         {
             var im = new SingleSampleCtrl { MethodName = DisplayMethodName, SampleCount = 1 };
-
+            im.Margin = new Thickness(4);
             return im;
         }
 
