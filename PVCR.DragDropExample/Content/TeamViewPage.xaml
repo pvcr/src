@@ -11,12 +11,11 @@
             <RowDefinition Height="*"  />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.2*" />
-            <ColumnDefinition Width="0.2*" />
-            <ColumnDefinition Width="0.2*" />
-            <ColumnDefinition Width="0.2*" />
-            <ColumnDefinition Width="0.2*" />
-           
+            <ColumnDefinition Width="215" />
+            <ColumnDefinition Width="215" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
         <!--<TextBlock Grid.Column="0" Text="Row 1" HorizontalAlignment="Center" VerticalAlignment="Stretch"/>
@@ -29,7 +28,7 @@
         <local:TVSetupPage Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
         <local:TVTestingPage Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
         <local:TVWriteupPage Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
-        <local:TVReviewPage Grid.Column="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />      
+        <local:TVReviewPage Grid.Column="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
 
     </Grid>
 </UserControl>

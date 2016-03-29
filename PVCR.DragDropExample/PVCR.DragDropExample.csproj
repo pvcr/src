@@ -66,6 +66,8 @@
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Data" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.DirectoryServices.AccountManagement" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml" />
@@ -112,6 +114,7 @@
     <Compile Include="Content\MapPage.xaml.cs">
       <DependentUpon>MapPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Content\MoreViewPage.cs" />
     <Compile Include="Content\NavCommentsPage.xaml.cs">
       <DependentUpon>NavCommentsPage.xaml</DependentUpon>
     </Compile>
@@ -120,6 +123,9 @@
     </Compile>
     <Compile Include="Content\NavTopPage.xaml.cs">
       <DependentUpon>NavTopPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Content\ReadyPage.xaml.cs">
+      <DependentUpon>ReadyPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Content\ReviewPage.xaml.cs">
       <DependentUpon>ReviewPage.xaml</DependentUpon>
@@ -130,8 +136,23 @@
     <Compile Include="Content\SetupPage.xaml.cs">
       <DependentUpon>SetupPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Content\TeamViewPage.xaml.cs">
+      <DependentUpon>TeamViewPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Content\TestingPage.xaml.cs">
       <DependentUpon>TestingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Content\TVReviewPage.xaml.cs">
+      <DependentUpon>TVReviewPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Content\TVSetupPage.xaml.cs">
+      <DependentUpon>TVSetupPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Content\TVTestingPage.xaml.cs">
+      <DependentUpon>TVTestingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Content\TVWriteupPage.xaml.cs">
+      <DependentUpon>TVWriteupPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Content\WorkPage.xaml.cs">
       <DependentUpon>WorkPage.xaml</DependentUpon>
@@ -235,6 +256,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Content\ReadyPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Content\ReviewPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -247,7 +272,27 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Content\TeamViewPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Content\TestingPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Content\TVReviewPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Content\TVSetupPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Content\TVTestingPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Content\TVWriteupPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
