@@ -14,7 +14,7 @@
 
         <!--Title row-->
 
-        <Rectangle RadiusX="40" RadiusY="40" Width="60" Height="60" Grid.Row="0">
+        <Rectangle x:Name="imgProfile" RadiusX="40" RadiusY="40" Width="60" Height="60" Grid.Row="0">
             <Rectangle.Fill>
                 <ImageBrush  ImageSource="/images/person.png"  />
             </Rectangle.Fill>

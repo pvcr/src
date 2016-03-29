@@ -61,7 +61,7 @@
                     <RowDefinition Height="0.25*"  />
                 </Grid.RowDefinitions>
 
-                <localctrl:TestingCtrl Grid.Row="0"  Margin="2"  DisplayImageName="Lab-icon185-2.png"  DisplayMethodName="{Binding TestingModel1.Name}" DisplayValue="{Binding TestingModel1.Count}"/>
+                <localctrl:TestingCtrl Grid.Row="0"  Margin="2"  MinWidth="130" MinHeight="80" DisplayImageName="Lab-icon185-2.png"  DisplayMethodName="{Binding TestingModel1.Name}" DisplayValue="{Binding TestingModel1.Count}"/>
 
                 <localctrl:TestingCtrl Grid.Row="1"  Margin="2" DisplayImageName="lab-icon64.png" DisplayMethodName="{Binding TestingModel2.Name}" DisplayValue="{Binding TestingModel2.Count}" />
 

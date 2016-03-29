@@ -14,6 +14,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using PVCR.DragDropExample.Utils;
+using System.DirectoryServices;
+using System.IO;
 
 namespace PVCR.DragDropExample.Content
 {
@@ -26,10 +28,54 @@ namespace PVCR.DragDropExample.Content
         public NavTopPage()
         {
             InitializeComponent();
+            Loaded += NavTopPage_Loaded;
         }
-      
 
-        
+        private void NavTopPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            SetProfileImage();
+        }
+
+        private void SetProfileImage()
+        {
+           
+
+            try
+            {
+                DirectoryEntry de = new DirectoryEntry();
+
+                de.Path = "LDAP://corp.shire.com";
+
+                DirectorySearcher search = new DirectorySearcher();
+                search.SearchRoot = de;
+                search.Filter = "(&(objectClass=user)(objectCategory=person)(sAMAccountName=rosmith))";
+                search.PropertiesToLoad.Add("samaccountname");
+                search.PropertiesToLoad.Add("thumbnailPhoto");
+                SearchResult user;
+                user = search.FindOne();
+
+                String userName;
+
+                userName = (String)user.Properties["sAMAccountName"][0];
+                byte[] bb = (byte[])user.Properties["thumbnailPhoto"][0];
+                BitmapImage biImg = new BitmapImage();
+                MemoryStream ms = new MemoryStream(bb);
+                biImg.BeginInit();
+                biImg.StreamSource = ms;
+                biImg.EndInit();
+
+                ImageSource imgSrc = biImg as ImageSource;
+
+                ImageBrush ib = new ImageBrush(imgSrc);
+                imgProfile.Fill = ib;
+                //imgprofile.
+            }
+            catch
+            {
+
+            }
+
+        }
         /// <summary>
         /// 
         /// </summary>

@@ -226,10 +226,12 @@ namespace PVCR.DragDropExample.ViewModels
 
                             };
             RedSamples = redGroups.ToObservableCollection<SampleModel>();
-
-            SampleGroup1 = RedSamples[0];
-            SampleGroup2 = RedSamples[1];
-            SampleGroup3 = RedSamples[2];
+            if (RedSamples.Count > 0)
+                SampleGroup1 = RedSamples[0];
+            if (RedSamples.Count >1)
+                SampleGroup2 = RedSamples[1];
+            if (RedSamples.Count > 2)
+                SampleGroup3 = RedSamples[2];
 
 
             var greenGroups = from sm in greenItems
@@ -242,8 +244,10 @@ namespace PVCR.DragDropExample.ViewModels
 
                               };
             GreenSamples = greenGroups.ToObservableCollection<SampleModel>();
-            SampleGroup4 = GreenSamples[0];
-            SampleGroup5 = GreenSamples[1];
+            if(GreenSamples.Count >0)
+                SampleGroup4 = GreenSamples[0];
+            if (GreenSamples.Count > 0)
+                SampleGroup5 = GreenSamples[1];
 
 
             var yellowGroups = from sm in yellowItems
@@ -257,8 +261,10 @@ namespace PVCR.DragDropExample.ViewModels
                                };
 
             YellowSamples = yellowGroups.ToObservableCollection<SampleModel>();
-            SampleGroup6 = YellowSamples[0];
-            SampleGroup7 = YellowSamples[1];
+            if (YellowSamples.Count > 0)
+                SampleGroup6 = YellowSamples[0];
+            if (YellowSamples.Count > 1)
+                SampleGroup7 = YellowSamples[1];
         }
 
         private void GetSampleTestData()
@@ -305,10 +311,14 @@ namespace PVCR.DragDropExample.ViewModels
             if (_lst == null) { _loger.LogWrite("No testing data."); GetTestingTestData(); return; }
 
             Testings = _lst;
-            TestingModel1 = Testings[0];
-            TestingModel2 = Testings[1];
-            TestingModel3 = Testings[2];
-            TestingModel4 = Testings[3];
+            if (Testings.Count > 0)
+                TestingModel1 = Testings[0];
+            if (Testings.Count > 1)
+                TestingModel2 = Testings[1];
+            if (Testings.Count > 2)
+                TestingModel3 = Testings[2];
+            if (Testings.Count > 3)
+                TestingModel4 = Testings[3];
         }
 
         private void GetTestingTestData()

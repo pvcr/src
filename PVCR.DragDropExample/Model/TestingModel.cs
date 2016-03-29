@@ -12,10 +12,10 @@ namespace PVCR.DragDropExample.Model
         [DbColumn("name")]
         public string Name { get; set; }
 
-        [DbColumn("x_method_number")]
+        [DbColumn("method_Number")]
         public string MethodNumber { get; set; }
 
-        [DbColumn("count")]
+        [DbColumn("samples_Per_Method_No")]
         public int Count { get; set; }
     }
 }
