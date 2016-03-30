@@ -19,6 +19,7 @@ namespace PVCR.DragDropExample.ViewModels
         private ISampleService _sampleServ;
         private ITestingService _testingServ;
         private IWriteupService _writeupServ;
+        private ITVTestingService _tvTestingServ;
 
         private LogWriter _loger;
         public MainViewModel(LogWriter loger)
@@ -29,6 +30,7 @@ namespace PVCR.DragDropExample.ViewModels
             _scheduleServ = new ScheduleService();
             _testingServ = new TestingService();
             _writeupServ = new WriteupService();
+            _tvTestingServ = new TVTestingService();
 
             Init();
 
@@ -41,9 +43,13 @@ namespace PVCR.DragDropExample.ViewModels
             GetWriteup();
 
             CreateWriteups();
+
+            GetTVTestings();
         }
 
        
+
+
 
 
 
@@ -96,6 +102,13 @@ namespace PVCR.DragDropExample.ViewModels
 
         public TestingModel TestingModel4 { get; private set; }
 
+        public TVTestingModel TVTestingModel1 { get; private set; }
+        public TVTestingModel TVTestingModel2 { get; private set; }
+        public TVTestingModel TVTestingModel3 { get; private set; }
+        public TVTestingModel TVTestingModel4 { get; private set; }
+        public TVTestingModel TVTestingModel5 { get; private set; }
+        public TVTestingModel TVTestingModel6 { get; private set; }
+
         public WriteupModel WriteupModel1 { get; set; }
 
         public WriteupModel WriteupModel2 { get; set; }
@@ -107,6 +120,8 @@ namespace PVCR.DragDropExample.ViewModels
         public ObservableCollection<WriteupModel> Writeups { get; set; }
 
         public ObservableCollection<TestingModel> Testings { get; set; }
+
+        public ObservableCollection<TVTestingModel> TVTestings { get; set; }
 
         public ObservableCollection<SampleModel> Samples { get; set; }
 
@@ -160,6 +175,24 @@ namespace PVCR.DragDropExample.ViewModels
                 _loger.LogWrite("LoadTestingData() start");
                 retVal = _testingServ.GetAllTestings().ToObservableCollection<TestingModel>();
                 _loger.LogWrite("LoadTestingData() finished");
+            }
+            catch (Exception ex)
+            {
+                _loger.LogWrite(ex.Message);
+            }
+
+
+            return retVal;
+        }
+
+        private ObservableCollection<TVTestingModel> LoadTVTestingData()
+        {
+            ObservableCollection<TVTestingModel> retVal = null;
+            try
+            {
+                _loger.LogWrite("LoadTVTestingData() start");
+                retVal = _tvTestingServ.GetAllTVTestings().ToObservableCollection<TVTestingModel>();
+                _loger.LogWrite("LoadTVTestingData() finished");
             }
             catch (Exception ex)
             {
@@ -342,6 +375,44 @@ namespace PVCR.DragDropExample.ViewModels
 
         }
 
+        private void GetTVTestings()
+        {
+            ObservableCollection<TVTestingModel> _lst = LoadTVTestingData();
+
+            if (_lst == null) { _loger.LogWrite("No team view testing data."); GetTVTestingTestData(); return; }
+
+            TVTestings = _lst;
+            if (TVTestings.Count > 0)
+                TVTestingModel1 = TVTestings[0];
+            if (TVTestings.Count > 1)
+                TVTestingModel2 = TVTestings[1];
+            if (TVTestings.Count > 2)
+                TVTestingModel3 = TVTestings[2];
+            if (TVTestings.Count > 3)
+                TVTestingModel4 = TVTestings[3];
+        }
+        private void GetTVTestingTestData()
+        {
+
+            var testlst = new ObservableCollection<TVTestingModel>();
+
+
+            for (int i = 1; i < 7; i++)
+            {
+                testlst.Add(new TVTestingModel { Name = "Name " + i, MethodNumber = "MethodNumber" + i, Count = i * 6 });
+            }
+
+            TVTestings = testlst;
+
+            TVTestingModel1 = TVTestings[0];
+            TVTestingModel2 = TVTestings[1];
+            TVTestingModel3 = TVTestings[2];
+            TVTestingModel4 = TVTestings[3];
+            TVTestingModel5 = TVTestings[4];
+            TVTestingModel6 = TVTestings[5];
+
+
+        }
         private void GetWriteup()
         {
             ObservableCollection<WriteupModel> _lst = LoadWriteupData();
