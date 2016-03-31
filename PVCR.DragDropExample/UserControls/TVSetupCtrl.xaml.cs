@@ -22,7 +22,14 @@ namespace PVCR.DragDropExample.UserControls
     /// </summary>
     public partial class TVSetupCtrl : UserControl
     {
-       
+
+        public string InstrumentName
+        {
+            get { return (string)GetValue(InstrumentNameProperty); }
+            set { SetValue(InstrumentNameProperty, value); }
+        }
+        public static readonly DependencyProperty InstrumentNameProperty =
+          DependencyProperty.Register("InstrumentName", typeof(string), typeof(TVSetupCtrl), new FrameworkPropertyMetadata("Default", OnInstrumentNamePropertyChanged));
 
         public int DisplayValue
         {
@@ -57,6 +64,14 @@ namespace PVCR.DragDropExample.UserControls
         {
             TVSetupCtrl control = source as TVSetupCtrl;
             control.sampleCount.Text = e.NewValue.ToString();
+
+        }
+
+        private static void OnInstrumentNamePropertyChanged(DependencyObject source, DependencyPropertyChangedEventArgs e)
+        {
+            TVSetupCtrl control = source as TVSetupCtrl;
+            control.instrumentName.Text = e.NewValue.ToString();
+           // inst.sampleCount.Text = e.NewValue.ToString();
 
         }
 
@@ -120,7 +135,7 @@ namespace PVCR.DragDropExample.UserControls
 
                     testingImgContainer.Children.Add(GetDisplayImage(file));
                     
-                    instrumentName.Text = DisplayImageName.Substring(0, DisplayImageName.Length - Path.GetExtension(DisplayImageName).Length); ;
+                    //instrumentName.Text = DisplayImageName.Substring(0, DisplayImageName.Length - Path.GetExtension(DisplayImageName).Length); ;
                 }
                 if (Path.GetFileName(file) == "kanban_card .png")
                 {
