@@ -20,6 +20,7 @@ namespace PVCR.DragDropExample.ViewModels
         private ITestingService _testingServ;
         private IWriteupService _writeupServ;
         private ITVTestingService _tvTestingServ;
+        private ITVReviewService _tvReviewServ;
 
         private LogWriter _loger;
         public MainViewModel(LogWriter loger)
@@ -31,6 +32,8 @@ namespace PVCR.DragDropExample.ViewModels
             _testingServ = new TestingService();
             _writeupServ = new WriteupService();
             _tvTestingServ = new TVTestingService();
+            _tvReviewServ = new TVReviewService();
+
 
             Init();
 
@@ -45,9 +48,13 @@ namespace PVCR.DragDropExample.ViewModels
             CreateWriteups();
 
             GetTVTestings();
+
+            GetTVReviews();
         }
 
        
+
+
 
 
 
@@ -109,6 +116,14 @@ namespace PVCR.DragDropExample.ViewModels
         public TVTestingModel TVTestingModel5 { get; private set; }
         public TVTestingModel TVTestingModel6 { get; private set; }
 
+
+        public TVReviewModel TVReviewModel1 { get; private set; }
+        public TVReviewModel TVReviewModel2 { get; private set; }
+        public TVReviewModel TVReviewModel3 { get; private set; }
+        public TVReviewModel TVReviewModel4 { get; private set; }
+        public TVReviewModel TVReviewModel5 { get; private set; }
+        public TVReviewModel TVReviewModel6 { get; private set; }
+
         public WriteupModel WriteupModel1 { get; set; }
 
         public WriteupModel WriteupModel2 { get; set; }
@@ -123,6 +138,8 @@ namespace PVCR.DragDropExample.ViewModels
 
         public ObservableCollection<TVTestingModel> TVTestings { get; set; }
 
+        public ObservableCollection<TVReviewModel> TVReviews { get; set; }
+
         public ObservableCollection<SampleModel> Samples { get; set; }
 
         public ObservableCollection<SampleModel> GreenSamples { get; set; }
@@ -130,12 +147,15 @@ namespace PVCR.DragDropExample.ViewModels
         public ObservableCollection<SampleModel> YellowSamples { get; set; }
 
         public ObservableCollection<SampleModel> RedSamples { get; set; }
-       
+
 
         #endregion
 
 
         #region Functions
+
+       
+
 
         private void CreateWriteups()
         {
@@ -193,6 +213,24 @@ namespace PVCR.DragDropExample.ViewModels
                 _loger.LogWrite("LoadTVTestingData() start");
                 retVal = _tvTestingServ.GetAllTVTestings().ToObservableCollection<TVTestingModel>();
                 _loger.LogWrite("LoadTVTestingData() finished");
+            }
+            catch (Exception ex)
+            {
+                _loger.LogWrite(ex.Message);
+            }
+
+
+            return retVal;
+        }
+
+        private ObservableCollection<TVReviewModel> LoadTVReviewData()
+        {
+            ObservableCollection<TVReviewModel> retVal = null;
+            try
+            {
+                _loger.LogWrite("LoadTVReviewData() start");
+                retVal = _tvReviewServ.GetAllTVReviews().ToObservableCollection<TVReviewModel>();
+                _loger.LogWrite("LoadTVReviewData() finished");
             }
             catch (Exception ex)
             {
@@ -413,6 +451,47 @@ namespace PVCR.DragDropExample.ViewModels
 
 
         }
+
+        private void GetTVReviews()
+        {
+            ObservableCollection<TVReviewModel> _lst = LoadTVReviewData();
+
+            if (_lst == null) { _loger.LogWrite("No team view review data."); GetTVReviewTestData(); return; }
+
+            TVReviews = _lst;
+            if (TVReviews.Count > 0)
+                TVReviewModel1 = TVReviews[0];
+            if (TVReviews.Count > 1)
+                TVReviewModel2 = TVReviews[1];
+            if (TVReviews.Count > 2)
+                TVReviewModel3 = TVReviews[2];
+            if (TVReviews.Count > 3)
+                TVReviewModel4 = TVReviews[3];
+        }
+
+        private void GetTVReviewTestData()
+        {
+
+            var testlst = new ObservableCollection<TVReviewModel>();
+
+
+            for (int i = 1; i < 7; i++)
+            {
+                testlst.Add(new TVReviewModel { Name = "Name " + i, MethodNumber = "MethodNumber" + i, Count = i * 6 });
+            }
+
+            TVReviews = testlst;
+
+            TVReviewModel1 = TVReviews[0];
+            TVReviewModel2 = TVReviews[1];
+            TVReviewModel3 = TVReviews[2];
+            TVReviewModel4 = TVReviews[3];
+            TVReviewModel5 = TVReviews[4];
+            TVReviewModel6 = TVReviews[5];
+
+
+        }
+
         private void GetWriteup()
         {
             ObservableCollection<WriteupModel> _lst = LoadWriteupData();

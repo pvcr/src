@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="PVCR.DragDropExample.UserControls.TVSetupCtrl"
+﻿<UserControl x:Class="PVCR.DragDropExample.UserControls.TVReviewCtrl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,8 +6,8 @@
              xmlns:local="clr-namespace:PVCR.DragDropExample.UserControls"
              mc:Ignorable="d" 
               d:DesignHeight="100" d:DesignWidth="100">
-    <!--<Border  BorderBrush="#1F73D1" BorderThickness="1" CornerRadius="2,2,2,2"  AllowDrop="True">-->
-    <Grid x:Name="layoutTVSetupCtrlRoot">
+   
+    <Grid x:Name="layoutTVReviewCtrlRoot">
 
         <Grid.RowDefinitions>
             <RowDefinition Height="30" />
@@ -36,14 +36,14 @@
                    VerticalAlignment="Center"
                    HorizontalAlignment="Right"
                    TextWrapping="Wrap"/>
-       
+
 
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0.5*" />
-                <ColumnDefinition Width="0.5*" />               
+                <ColumnDefinition Width="0.5*" />
             </Grid.ColumnDefinitions>
-            <Rectangle x:Name="tvSetupimgProfile" Width="60" Height="60" Grid.Column="0">
+            <Rectangle x:Name="tvReviewimgProfile" Width="60" Height="60" Grid.Column="0">
                 <Rectangle.Fill>
                     <ImageBrush  ImageSource="/images/person.png"  />
                 </Rectangle.Fill>
@@ -54,7 +54,7 @@
                     <RowDefinition Height="20" />
                 </Grid.RowDefinitions>
 
-                <WrapPanel Grid.Row="0"  x:Name="testingImgContainer" Margin="0"   VerticalAlignment="Stretch" HorizontalAlignment="Stretch" >
+                <WrapPanel Grid.Row="0"  x:Name="reviewImgContainer" Margin="0"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" >
 
                 </WrapPanel>
                 <TextBlock Grid.Row="1" Margin="0" x:Name="instrumentName"
