@@ -49,10 +49,22 @@
                 </Rectangle.Fill>
             </Rectangle>
             <Grid Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="20" />
+                </Grid.RowDefinitions>
 
-                <WrapPanel  x:Name="testingImgContainer" Margin="0"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" >
+                <WrapPanel Grid.Row="0"  x:Name="testingImgContainer" Margin="0"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" >
 
                 </WrapPanel>
+                <TextBlock Grid.Row="1" Margin="0" x:Name="instrumentName"
+                   Text="Name" 
+                   FontSize="11"
+                   FontWeight="Normal"
+                   Foreground="#000000"                   
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Right"
+                   TextWrapping="Wrap"/>
             </Grid>
         </Grid>
     </Grid>

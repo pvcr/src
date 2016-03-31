@@ -119,6 +119,8 @@ namespace PVCR.DragDropExample.UserControls
                     testingImgContainer.Children.Clear();
 
                     testingImgContainer.Children.Add(GetDisplayImage(file));
+                    
+                    instrumentName.Text = DisplayImageName.Substring(0, DisplayImageName.Length - Path.GetExtension(DisplayImageName).Length); ;
                 }
                 if (Path.GetFileName(file) == "kanban_card .png")
                 {
@@ -150,7 +152,7 @@ namespace PVCR.DragDropExample.UserControls
 
         private void NavTopPage_Loaded(object sender, RoutedEventArgs e)
         {
-            SetProfileImage();
+            //SetProfileImage();
         }
 
         private void SetProfileImage()
