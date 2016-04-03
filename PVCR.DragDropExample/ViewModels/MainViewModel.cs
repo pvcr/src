@@ -21,23 +21,26 @@ namespace PVCR.DragDropExample.ViewModels
         private IWriteupService _writeupServ;
         private ITVTestingService _tvTestingServ;
         private ITVReviewService _tvReviewServ;
+        private ITVSetupService _tvSetupServ;
 
         private LogWriter _loger;
+
+        private List<string> _instrumentLst;
         public MainViewModel(LogWriter loger)
         {
             _loger = loger;
-
+            _instrumentLst = new List<string> { "Sievers M9 TOC", "Spectra Max" };
             _sampleServ = new SampleService();
             _scheduleServ = new ScheduleService();
             _testingServ = new TestingService();
             _writeupServ = new WriteupService();
             _tvTestingServ = new TVTestingService();
             _tvReviewServ = new TVReviewService();
-
+            _tvSetupServ = new TVSetupService();
 
             Init();
 
-           Appointments= GetAppointments();
+            Appointments = GetAppointments();
 
             GetSamples();
 
@@ -50,16 +53,10 @@ namespace PVCR.DragDropExample.ViewModels
             GetTVTestings();
 
             GetTVReviews();
+
+            GetTVSetups();
         }
-
-       
-
-
-
-
-
-
-
+        
 
         #region Properties
 
@@ -140,6 +137,8 @@ namespace PVCR.DragDropExample.ViewModels
 
         public ObservableCollection<TVReviewModel> TVReviews { get; set; }
 
+        public ObservableCollection<TVSetupModel> TVSetups { get; set; }
+
         public ObservableCollection<SampleModel> Samples { get; set; }
 
         public ObservableCollection<SampleModel> GreenSamples { get; set; }
@@ -154,19 +153,15 @@ namespace PVCR.DragDropExample.ViewModels
 
         #region Functions
 
-       
-
-
         private void CreateWriteups()
         {
-            Writeups = new ObservableCollection<WriteupModel>() { new WriteupModel { Message="Test1",Count=10 }, new WriteupModel { Message = "Test2", Count = 10 }, new WriteupModel { Message = "Test3", Count = 10 } };
+            Writeups = new ObservableCollection<WriteupModel>() { new WriteupModel { Message = "Test1", Count = 10 }, new WriteupModel { Message = "Test2", Count = 10 }, new WriteupModel { Message = "Test3", Count = 10 } };
         }
 
         private ObservableCollection<CustomAppointment> GetAppointments()
         {
-           return _scheduleServ.GetAppointments();
+            return _scheduleServ.GetAppointments();
         }
-       
 
         private ObservableCollection<SampleModel> LoadSampleData()
         {
@@ -241,7 +236,24 @@ namespace PVCR.DragDropExample.ViewModels
             return retVal;
         }
 
+        private ObservableCollection<TVSetupModel> LoadTVSetupData()
+        {
+            ObservableCollection<TVSetupModel> retVal = null;
+            try
+            {
+                _loger.LogWrite("LoadTVSetupData() start");
+                retVal = _tvSetupServ.GetAllTVSetups().ToObservableCollection<TVSetupModel>();
+                _loger.LogWrite("LoadTVSetupData() finished");
+            }
+            catch (Exception ex)
+            {
+                _loger.LogWrite(ex.Message);
+            }
 
+
+            return retVal;
+        }   
+        
         private ObservableCollection<WriteupModel> LoadWriteupData()
         {
             ObservableCollection<WriteupModel> retVal = null;
@@ -299,7 +311,7 @@ namespace PVCR.DragDropExample.ViewModels
             RedSamples = redGroups.ToObservableCollection<SampleModel>();
             if (RedSamples.Count > 0)
                 SampleGroup1 = RedSamples[0];
-            if (RedSamples.Count >1)
+            if (RedSamples.Count > 1)
                 SampleGroup2 = RedSamples[1];
             if (RedSamples.Count > 2)
                 SampleGroup3 = RedSamples[2];
@@ -315,7 +327,7 @@ namespace PVCR.DragDropExample.ViewModels
 
                               };
             GreenSamples = greenGroups.ToObservableCollection<SampleModel>();
-            if(GreenSamples.Count >0)
+            if (GreenSamples.Count > 0)
                 SampleGroup4 = GreenSamples[0];
             if (GreenSamples.Count > 0)
                 SampleGroup5 = GreenSamples[1];
@@ -343,9 +355,9 @@ namespace PVCR.DragDropExample.ViewModels
             var redlst = new ObservableCollection<SampleModel>();
 
 
-            for(int i=1;i<5;i++)
+            for (int i = 1; i < 5; i++)
             {
-                redlst.Add( new SampleModel { MethodName = "RedGroup "+i, Count = i*6 });
+                redlst.Add(new SampleModel { MethodName = "RedGroup " + i, Count = i * 6 });
             }
 
             SampleGroup1 = redlst[0];
@@ -361,7 +373,7 @@ namespace PVCR.DragDropExample.ViewModels
             }
             SampleGroup4 = yellowlst[0];
             SampleGroup5 = yellowlst[1];
-           
+
             YellowSamples = yellowlst;
 
             var greenlst = new ObservableCollection<SampleModel>();
@@ -391,7 +403,6 @@ namespace PVCR.DragDropExample.ViewModels
             if (Testings.Count > 3)
                 TestingModel4 = Testings[3];
         }
-
         private void GetTestingTestData()
         {
 
@@ -400,7 +411,7 @@ namespace PVCR.DragDropExample.ViewModels
 
             for (int i = 1; i < 5; i++)
             {
-                testlst.Add(new TestingModel { Name = "Name " + i, MethodNumber= "MethodNumber" + i, Count = i * 6 });
+                testlst.Add(new TestingModel { Name = "Name " + i, MethodNumber = "MethodNumber" + i, Count = i * 6 });
             }
 
             Testings = testlst;
@@ -420,6 +431,7 @@ namespace PVCR.DragDropExample.ViewModels
             if (_lst == null) { _loger.LogWrite("No team view testing data."); GetTVTestingTestData(); return; }
 
             TVTestings = _lst;
+            TVTestings.Each(t => t.InstrumentName = _instrumentLst.PickRandom<string>());
             if (TVTestings.Count > 0)
                 TVTestingModel1 = TVTestings[0];
             if (TVTestings.Count > 1)
@@ -435,13 +447,13 @@ namespace PVCR.DragDropExample.ViewModels
             var testlst = new ObservableCollection<TVTestingModel>();
 
 
-            for (int i = 1; i < 7; i++)
+            for (int i = 1; i < 17; i++)
             {
                 testlst.Add(new TVTestingModel { Name = "Name " + i, MethodNumber = "MethodNumber" + i, Count = i * 6 });
             }
 
             TVTestings = testlst;
-
+            TVTestings.Each(t => t.InstrumentName = _instrumentLst.PickRandom<string>());
             TVTestingModel1 = TVTestings[0];
             TVTestingModel2 = TVTestings[1];
             TVTestingModel3 = TVTestings[2];
@@ -459,6 +471,7 @@ namespace PVCR.DragDropExample.ViewModels
             if (_lst == null) { _loger.LogWrite("No team view review data."); GetTVReviewTestData(); return; }
 
             TVReviews = _lst;
+            TVReviews.Each(t => t.InstrumentName = _instrumentLst.PickRandom<string>());
             if (TVReviews.Count > 0)
                 TVReviewModel1 = TVReviews[0];
             if (TVReviews.Count > 1)
@@ -468,20 +481,19 @@ namespace PVCR.DragDropExample.ViewModels
             if (TVReviews.Count > 3)
                 TVReviewModel4 = TVReviews[3];
         }
-
         private void GetTVReviewTestData()
         {
 
             var testlst = new ObservableCollection<TVReviewModel>();
 
 
-            for (int i = 1; i < 7; i++)
+            for (int i = 1; i < 17; i++)
             {
                 testlst.Add(new TVReviewModel { Name = "Name " + i, MethodNumber = "MethodNumber" + i, Count = i * 6 });
             }
 
             TVReviews = testlst;
-
+            TVReviews.Each(t => t.InstrumentName = _instrumentLst.PickRandom<string>());
             TVReviewModel1 = TVReviews[0];
             TVReviewModel2 = TVReviews[1];
             TVReviewModel3 = TVReviews[2];
@@ -492,11 +504,54 @@ namespace PVCR.DragDropExample.ViewModels
 
         }
 
+        private void GetTVSetups()
+        {
+            ObservableCollection<TVSetupModel> _lst = LoadTVSetupData();
+
+            if (_lst == null) { _loger.LogWrite("No team view setup data."); GetTVSetupTestData(); return; }
+
+            TVSetups = _lst;
+            TVSetups.Each(t => t.InstrumentName = _instrumentLst.PickRandom<string>());
+            //if (TVTestings.Count > 0)
+            //    TVTestingModel1 = TVTestings[0];
+            //if (TVTestings.Count > 1)
+            //    TVTestingModel2 = TVTestings[1];
+            //if (TVTestings.Count > 2)
+            //    TVTestingModel3 = TVTestings[2];
+            //if (TVTestings.Count > 3)
+            //    TVTestingModel4 = TVTestings[3];
+        }
+        private void GetTVSetupTestData()
+        {
+
+            var setuplst = new ObservableCollection<TVSetupModel>();
+
+
+            for (int i = 1; i < 17; i++)
+            {
+                setuplst.Add(new TVSetupModel { Name = "Name " + i, MethodNumber = "MethodNumber" + i, Count = i * 6 });
+            }
+
+            TVSetups = setuplst;
+
+            TVSetups.Each(t => t.InstrumentName = _instrumentLst.PickRandom<string>());
+           
+            
+            //TVReviewModel1 = TVReviews[0];
+            //TVReviewModel2 = TVReviews[1];
+            //TVReviewModel3 = TVReviews[2];
+            //TVReviewModel4 = TVReviews[3];
+            //TVReviewModel5 = TVReviews[4];
+            //TVReviewModel6 = TVReviews[5];
+
+
+        }
+
         private void GetWriteup()
         {
             ObservableCollection<WriteupModel> _lst = LoadWriteupData();
 
-            if (_lst == null) { _loger.LogWrite("No Writeup data.");  return; }
+            if (_lst == null) { _loger.LogWrite("No Writeup data."); return; }
 
             var groups = from m in _lst
                          group m by m.Message

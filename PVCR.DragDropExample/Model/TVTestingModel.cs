@@ -15,7 +15,15 @@ namespace PVCR.DragDropExample.Model
         [DbColumn("method_Number")]
         public string MethodNumber { get; set; }
 
+        [DbColumn("total_results_Count")]
+        public int TotalResultCount { get; set; }
+
+        [DbColumn("completed_Results_Count")]
+        public int CompletedResultCount { get; set; }
+
         [DbColumn("samples_Per_Method_No")]
         public int Count { get; set; }
+
+        public string InstrumentName { get; set; }
     }
 }

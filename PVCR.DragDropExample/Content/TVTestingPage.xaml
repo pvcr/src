@@ -18,7 +18,7 @@
         <TextBlock Grid.Row="0" 
                    Text="{Binding TestingTitle}" 
                    FontSize="10"
-                   FontWeight="Bold"
+                   FontWeight="Normal"
                    Foreground="#EEEEEE"                   
                    VerticalAlignment="Center"
                    HorizontalAlignment="Center"
@@ -35,7 +35,27 @@
                 </LinearGradientBrush>
             </Border.Background>
             <Grid>
-                <Grid.RowDefinitions>
+
+                <ScrollViewer Margin="0" >
+                    <ListView  ScrollViewer.HorizontalScrollBarVisibility="Disabled"  ItemsSource="{Binding TVTestings}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                        <ListView.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel Margin="0" Background="#1569C7" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+                            </ItemsPanelTemplate>
+                        </ListView.ItemsPanel>
+
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <localctrl:TVTestingCtrl Margin="0" MinWidth="170" Height="100" DisplayImageName="Lab-icon185-2.png"  DisplayMethodName="{Binding Name}" DisplayValue="{Binding Count}" InstrumentName="{Binding InstrumentName}"/>
+                                <!--<Rectangle Margin="0" Width="170" Height="100" Fill="PowderBlue" />-->
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+
+                    </ListView>
+                </ScrollViewer>
+
+
+                <!--<Grid.RowDefinitions>
                     <RowDefinition Height="0.16*"  />
                     <RowDefinition Height="0.16*"  />
                     <RowDefinition Height="0.16*"  />
@@ -56,7 +76,7 @@
 
                 <localctrl:TVSetupCtrl Grid.Row="4"  Margin="2"  DisplayImageName="Lab-icon185-2.png"  DisplayMethodName="{Binding TestingModel3.Name}" DisplayValue="{Binding TestingModel3.Count}" InstrumentName="Instrument1"/>
 
-                <localctrl:TVSetupCtrl Grid.Row="5"  Margin="2" DisplayImageName="lab-icon64.png" DisplayMethodName="{Binding TestingModel4.Name}" DisplayValue="{Binding TestingModel4.Count}" InstrumentName="Instrument1" />
+                <localctrl:TVSetupCtrl Grid.Row="5"  Margin="2" DisplayImageName="lab-icon64.png" DisplayMethodName="{Binding TestingModel4.Name}" DisplayValue="{Binding TestingModel4.Count}" InstrumentName="Instrument1" />-->
 
 
             </Grid>

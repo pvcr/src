@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 
 namespace PVCR.DragDropExample.Model
 {
-
-    public class TVReviewModel
+    public class TVSetupModel
     {
         [DbColumn("name")]
         public string Name { get; set; }
@@ -27,5 +26,4 @@ namespace PVCR.DragDropExample.Model
 
         public string InstrumentName { get; set; }
     }
-
 }

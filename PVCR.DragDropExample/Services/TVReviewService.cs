@@ -28,7 +28,7 @@ namespace PVCR.DragDropExample.Services
                                               bo.sample_type = 'SAMPLE' and
                                               bo.sample_number = s.sample_number  and
                                               s.sample_number  = t.sample_number and t.test_number = r.test_number and
-                                              s.status in ('I','P') and t.status in ('I','P')
+                                               t.status in ('C')
                                 GROUP BY b.name, t.x_method_number
                                 ORDER BY b.name,  count(bo.sample_number) desc";
 

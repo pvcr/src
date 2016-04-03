@@ -10,9 +10,9 @@
         <Grid x:Name="layoutTestingCtrlRoot">
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="30" />
+                <RowDefinition Height="35" />
                 <RowDefinition Height="*" />
-                <RowDefinition Height="20" />
+                <!--<RowDefinition Height="20" />-->
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="0" Margin="10,0,5,0" x:Name="methodName"
                    Text="UPLC" 
@@ -22,13 +22,13 @@
                    VerticalAlignment="Center"
                    HorizontalAlignment="Left"
                    TextWrapping="Wrap"/>
-            <Border Grid.Row="0" BorderThickness="1" BorderBrush="Black"  VerticalAlignment="Center" Margin="5,10,20,0"
+            <Border Grid.Row="0" BorderThickness="1" BorderBrush="Black"  VerticalAlignment="Center" Margin="5,10,30,0"
                    HorizontalAlignment="Right">
                 <!-- Uniform: Scale to fit output area.
              Aspect ratio is preserved.-->
-                <Image Source="/images/laboratory-icon32.png" MaxWidth="32" MaxHeight="32"  Stretch="Uniform" />
+                <Image Source="/images/laboratory-icon32.png" Width="32" Height="32"  Stretch="Uniform" />
             </Border>
-            <TextBlock Grid.Row="0" Margin="5,0,5,0" x:Name="sampleCount"
+            <TextBlock Grid.Row="0" Margin="5,0,10,0" x:Name="sampleCount"
                    Text="0" 
                    FontSize="11"
                    FontWeight="Normal"
@@ -42,14 +42,14 @@
                 </WrapPanel>
             </Grid>
 
-            <TextBlock Grid.Row="2" Margin="5,0,5,0" x:Name="dueDate"
+            <!--<TextBlock Grid.Row="2" Margin="5,0,5,0" x:Name="dueDate"
                    Text="DueDate1" 
                    FontSize="11"
                    FontWeight="Normal"
                    Foreground="#EEEEEE"                   
                    VerticalAlignment="Center"
                    HorizontalAlignment="Right"
-                   TextWrapping="Wrap"/>
+                   TextWrapping="Wrap"/>-->
 
         </Grid>
     <!--</Border>-->

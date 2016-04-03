@@ -16,7 +16,7 @@
         <TextBlock Grid.Row="0" 
                    Text="Comments" 
                    FontSize="10"
-                   FontWeight="Bold"
+                   FontWeight="Normal"
                    Foreground="#EEEEEE"                   
                    VerticalAlignment="Center"
                    HorizontalAlignment="Center"

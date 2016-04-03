@@ -1,15 +1,15 @@
-﻿using PVCR.DragDropExample.DB;
-using PVCR.DragDropExample.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PVCR.DragDropExample.Model;
+using PVCR.DragDropExample.DB;
+using System.Data;
 
 namespace PVCR.DragDropExample.Services
 {
-    public class TVTestingService : ITVTestingService
+    public class TVSetupService : ITVSetupService
     {
         private const string QUERY = @"SELECT  b.name,
                                         substring(t.x_method_number,1,20) method_Number,
@@ -27,18 +27,18 @@ namespace PVCR.DragDropExample.Services
                                               bo.sample_type = 'SAMPLE' and
                                               bo.sample_number = s.sample_number  and
                                               s.sample_number  = t.sample_number and t.test_number = r.test_number and
-                                               t.status in ('P')
+                                               t.status in ('I')
                                 GROUP BY b.name, t.x_method_number
                                 ORDER BY b.name,  count(bo.sample_number) desc";
 
 
-        public IEnumerable<TVTestingModel> GetAllTVTestings()
+        public IEnumerable<TVSetupModel> GetAllTVSetups()
         {
             SqlDataAccessHelper sqlHelper = new SqlDataAccessHelper();
 
             using (var reader = sqlHelper.ExecuteReader(QUERY, CommandType.Text, null))
             {
-                var mapper = new DataReaderMapper<TVTestingModel>(reader);
+                var mapper = new DataReaderMapper<TVSetupModel>(reader);
                 while (reader.Read())
                     yield return mapper.MapFrom(reader);
             }
